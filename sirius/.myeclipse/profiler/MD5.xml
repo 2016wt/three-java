@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="app_preset_prof_preset_name">MD5 Launch Configuration</entry>
+<entry key="profiler.settings.sampling.interval">10</entry>
+<entry key="app_preset_prof_preset_filter_s"/>
+<entry key="app_preset_prof_preset_filter_p">com.gdqxdj.web.*,&#13;
+com.sirius.common.fck.*,&#13;
+com.sirius.common.image.*,&#13;
+com.sirius.controller.*,&#13;
+com.sirius.custom.*,&#13;
+com.sirius.interceptor.*,&#13;
+com.sirius.mybatis.entity.*,&#13;
+com.sirius.mybatis.mapper.*,&#13;
+com.sirius.page.*,&#13;
+com.sirius.scheduled.*,&#13;
+com.sirius.service.*,&#13;
+com.sirius.servlet.*,&#13;
+com.sirius.shiro.credentials.*,&#13;
+com.sirius.shiro.realm.*,&#13;
+com.sirius.shiro.service.*,&#13;
+com.sirius.shiro.web.exception.*,&#13;
+com.sirius.shiro.web.mvc.*,&#13;
+com.sirius.utils.*</entry>
+<entry key="profiler.settings.n.profiled.threads.limit">32</entry>
+<entry key="app_preset_prof_preset_alloc_p">10</entry>
+<entry key="profiler.settings.instrument.method.invoke">true</entry>
+<entry key="app_preset_"/>
+<entry key="profiler.settings.obj.alloc.stack.sampling.depth">0</entry>
+<entry key="app_preset_prof_preset_samplingRefreshRate_s">1000</entry>
+<entry key="app_preset_prof_preset_stacks_p">false</entry>
+<entry key="app_preset_prof_preset_roots_p">com.gdqxdj.web.**
+com.sirius.common.fck.**
+com.sirius.common.image.**
+com.sirius.controller.**
+com.sirius.custom.**
+com.sirius.interceptor.**
+com.sirius.mybatis.entity.**
+com.sirius.mybatis.mapper.**
+com.sirius.page.**
+com.sirius.scheduled.**
+com.sirius.service.**
+com.sirius.servlet.**
+com.sirius.shiro.credentials.**
+com.sirius.shiro.realm.**
+com.sirius.shiro.service.**
+com.sirius.shiro.web.exception.**
+com.sirius.shiro.web.mvc.**
+com.sirius.utils.**
+</entry>
+<entry key="profiler.settings.instrument.empty.methods">false</entry>
+<entry key="myeclipse.profiling.mode">0</entry>
+<entry key="profiler.settings.istrument.getter.setter.methods">false</entry>
+<entry key="app_preset_prof_preset_samplingRate_s">100</entry>
+<entry key="profiler.settings.instr.scheme">1</entry>
+<entry key="profiler.settings.cpu.profiling.type">0</entry>
+<entry key="app_preset_prof_preset_selector"/>
+<entry key="app_preset_prof_preset_filterMode_s">true</entry>
+<entry key="app_preset_prof_preset_runnables_p">true</entry>
+<entry key="app_preset_prof_preset_refreshRate_s">1000</entry>
+<entry key="app_preset_prof_preset_filterMode_p">false</entry>
+<entry key="app_preset_prof_preset_memoryMode_p">true</entry>
+</properties>

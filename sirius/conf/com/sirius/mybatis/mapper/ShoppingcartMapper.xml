@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sirius.mybatis.mapper.ShoppingcartMapper">
+
+	<resultMap type="com.sirius.entity.query.ShoppingcartQuery"
+		id="ShoppingcartQuery">
+		<id column="id" property="id" />
+		<association property="goods" column="goods_id"
+			select="com.sirius.mybatis.mapper.GoodsMapper.getBaseById" />
+		<association property="contents" column="id"
+			select="com.sirius.mybatis.mapper.ShoppingcartContentMapper.getByCart" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into shoppingcart(shopkeeper_id,goods_id)
+		values(#{shopkeeperId},#{goodsId})
+	</insert>
+
+
+
+	<select id="shoppingcartByGoods" resultMap="ShoppingcartQuery">
+		select shoppingcart.* from
+		shoppingcart left join goods on (shoppingcart.goods_id=goods.id) where shopkeeper_id=#{0}
+		and (select count(1) from 
+		shoppingcart_content where amount>0 and shoppingcart_id=shoppingcart.id)>0 order by goods.putaway desc
+	</select>
+
+	<select id="shoppingcarts" resultMap="ShoppingcartQuery">
+		select * from shoppingcart where id in
+		<foreach collection="list" open="(" separator="," close=")"
+			item="item">
+			#{item}
+		</foreach>
+	</select>
+	<select id="moneyByCarts" resultType="java.lang.Double">
+		select sum(goods.price*shoppingcart_content.amount) from
+		shoppingcart_content
+		left join goods_specification on
+		shoppingcart_content.goods_specification_id=goods_specification.id
+		left join goods on goods_specification.goods_id=goods.id
+		where
+		shoppingcart_content.shoppingcart_id in
+		<foreach collection="list" open="(" separator="," close=")"
+			item="item">
+			#{item}
+		</foreach>
+	</select>
+	
+
+
+	<delete id="clearByIds">
+		delete from shoppingcart where id in
+		<foreach collection="list" open="(" separator="," close=")"
+			item="item">
+			#{item}
+		</foreach>
+	</delete>
+</mapper>

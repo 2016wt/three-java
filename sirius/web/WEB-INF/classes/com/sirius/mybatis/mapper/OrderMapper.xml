@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sirius.mybatis.mapper.OrderMapper">
+
+	<resultMap type="com.sirius.entity.query.OrderQuery" id="OrderQuery">
+		<id column="id" property="id" />
+		<association property="orderContents" column="{orderId=id}" select="getContentsById" />
+		
+	</resultMap>
+	
+	<resultMap type="com.sirius.entity.query.OrderQuery" id="BaseOrderQuery">
+		<id column="id" property="id" />
+		<association property="orderContents" column="{orderId=id}"
+			select="getContentsById" />
+	</resultMap>
+
+	<!-- 供应商订单 ， 子订单只获取供应商相关部分 -->
+	<resultMap type="com.sirius.entity.query.OrderQuery" id="WholesalerOrder">
+		<id column="id" property="id" />
+		<association property="orderContents"
+			column="{orderId=id,wholesalerId=wholesaler_id,status=status}"
+			select="getContentsById" />
+		<association property="spu" 
+			column="{id=id,wholesalerId=wholesaler_id}" select="getgoodsIdBySpu" />
+	</resultMap>
+	
+	
+	
+	
+	
+	
+	<select id="getById" resultMap="OrderQuery">
+		select * from `order` where
+		id=#{0}
+	</select>
+
+
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into
+		`order`(shopkeeper_id,order_no,money,name,phone,province_code,city_code,area_code,full_address)
+		values(#{shopkeeperId},#{orderNo},#{money},#{name},#{phone},#{provinceCode},#{cityCode},#{areaCode},#{fullAddress})
+	</insert>
+
+	<select id="orderList" resultMap="OrderQuery">
+		select * from `order` where
+		exist and
+		shopkeeper_id=#{shopkeeperId} and status=#{status} order by
+		id desc
+		limit #{size}
+	</select>
+	<select id="orderListMark" resultMap="OrderQuery">
+		select * from `order` where
+		exist and
+		shopkeeper_id=#{shopkeeperId} and status=#{status} and id
+		&lt;
+		#{markId} order by id desc limit #{size}
+	</select>
+	<select id="orderListAll" resultMap="OrderQuery">
+		select * from `order` where
+		exist and
+		shopkeeper_id=#{shopkeeperId} order by id desc
+		limit #{size}
+	</select>
+	<select id="orderListAllMark" resultMap="OrderQuery">
+		select * from `order`
+		
+		where exist and
+		shopkeeper_id=#{shopkeeperId} and id &lt;
+		#{markId} order
+		by id
+		desc limit #{size}
+	</select>
+
+
+
+	
+	
+	
+
+	<!-- 商品Spu查询 -->
+	<select id="getgoodsIdBySpu" resultType="java.lang.String">
+		select spu from goods where id in (
+		select distinct
+		goods_id
+		from
+		order_content where order_id=#{id} 
+		and goods_id in(select id from goods 
+		where wholesaler_id=#{wholesalerId} ))
+	</select>
+
+	<select id="getContentsById" resultType="com.sirius.entity.query.OrderContentQuery">
+		select
+		order_content.*,goods.goods_name,goods_specification.color,goods_specification.sku,goods_specification.size,goods.price,goods_specification.quantity,
+		(select img_url from goods_img where goods_img.goods_id=goods.id limit
+		1) img_url
+		from order_content
+		left join goods on
+		order_content.goods_id=goods.id
+		left join goods_specification on
+		order_content.goods_specification_id=goods_specification.id
+		where
+		order_content.order_id=#{orderId}
+		 <if test="wholesalerId != null">
+			and goods.wholesaler_id=#{wholesalerId}
+		</if> 
+		<if test="status != null">
+			and order_content.status=#{status}
+		</if>
+	</select>
+
+	<select id="data" resultMap="WholesalerOrder">
+		select id,status,#{wholesalerId} wholesaler_id,order_no,create_time,
+		(select
+		IFNULL(sum(money),0)
+		from order_content
+		where
+		order_content.order_id=`order`.id
+		and
+		goods_id in
+		(select id from goods
+		where wholesaler_id = #{wholesalerId}
+		)
+		) money
+		from `order`
+		where 1
+
+		<!-- 判断供应商的订单 -->
+		<if test="wholesalerId!=null">
+			and (select count(1) from order_content where goods_id in
+			(select id from goods where wholesaler_id = #{wholesalerId}
+			) and
+			`order`.id=order_content.order_id)
+		</if>
+		<!-- 根据订单编号查询 -->
+		<if test="orderNo!=null">
+			and order_no like #{orderNo}
+		</if>
+		<!-- 根据商品编号查询 -->
+		<if test="goodsid !=null">
+			and (select count(1) from order_content where goods_id in
+			(select id from goods where wholesaler_id=#{wholesalerId})
+			and
+			`order`.id=order_content.order_id
+			and
+			order_content.goods_id=#{goodsid})
+		</if>
+		<if test="paytimeStart !=null">
+			and pay_time>=#{paytimeStart}
+		</if>
+		<if test="paytimeEnd !=null">
+			and pay_time&lt;=#{paytimeEnd}
+		</if>
+
+		order by id
+		desc
+		<if test="offset!=null and limit!=null">
+			limit
+			#{offset},#{limit}
+		</if>
+	</select>
+	<select id="dataCount" resultType="java.lang.Integer">
+		select count(1)
+		from `order`
+
+		where 1
+		<!-- 判断供应商的订单 -->
+		<if test="wholesalerId!=null">
+			and (select count(1) from order_content where goods_id in
+			(select id from goods where wholesaler_id = #{wholesalerId}
+			) and
+			`order`.id=order_content.order_id)
+		</if>
+
+		<!-- 根据订单编号查询 -->
+		<if test="orderNo!=null">
+			and order_no like #{orderNo}
+		</if>
+		<!-- 根据商品编号查询 -->
+		<if test="goodsid !=null">
+			and (select count(1) from order_content where goods_id in
+			(select id from goods where wholesaler_id=#{wholesalerId})
+			and
+			`order`.id=order_content.order_id
+			and
+			order_content.goods_id=#{goodsid})
+		</if>
+
+		<if test="payTime !=null">
+			and pay_time=#{payTime}
+		</if>
+
+	</select>
+	<!-- 财务管理 -->
+	<select id="financedata" resultMap="OrderQuery">
+		select update_time,(select
+		IFNULL(sum(number),0)
+		from order_content
+		where
+		order_content.order_id=`order`.id
+		and
+		goods_id in
+		(select id from goods
+		where wholesaler_id = #{wholesalerId}
+		)
+		) number from `order`
+	</select>
+	<select id="financedataCount" resultType="java.lang.Integer">
+		select count(1) from
+		`order`
+	</select>
+
+	<!-- 查询所有订单 -->
+	<select id="getAllOrder" resultType="java.lang.Integer">
+		select
+		count(1)
+		from `order`
+		where (select count(1)
+		from order_content
+		where goods_id
+		in (select id
+		from goods
+		where wholesaler_id=#{wholesalerId})
+		and
+		`order`.id=order_content.order_id)
+	</select>
+
+
+	<select id="getByKeyword" resultMap="WholesalerOrder">
+		select `order`.*,#{wholesalerId} wholesaler_id from `order` where
+		exist
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		and (order_no=#{keyword} or express_no=#{keyword})
+	</select>
+
+
+	<!-- 处理中的订单 -->
+	<select id="getByWholesaler" resultMap="WholesalerOrder">
+		select `order`.*,#{wholesalerId} wholesaler_id from `order` where id =
+		#{id} and exist
+		<if test="status != null">
+			and status = #{status}
+		</if>
+	</select>
+	
+	<!-- 入库查询订单 -->
+	<select id="getByShopkeeper" resultMap="OrderQuery">
+		select `order`.* from `order` where exist  
+		and shopkeeper_id=#{shopkeeperId} 
+		<if test="status != null">
+			and status = #{status} 
+		</if>
+			and (order_no = #{keyword} or express_no = #{keyword})
+	</select>
+	
+	<select id="getBySku" resultType="com.sirius.entity.Order" >
+		select * from `order` 
+		where shopkeeper_id=#{shopkeeperId} 
+		and id in (select order_id from order_content 
+		where goods_specification_id in(
+		select id from goods_specification 
+		where sku in 
+		<foreach collection="tic" open="(" separator="," close=")" item="s">
+		 	#{s}
+		</foreach>
+		))
+	</select>
+	
+	<!-- <select id="getOrderByOrderNo">
+		select * from `order` 
+		where exist and `status`=#{status} 
+		and order_no=#{orderNo}
+	</select> -->
+</mapper>

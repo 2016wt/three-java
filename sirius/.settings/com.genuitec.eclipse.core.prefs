@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=conf/conf/springmvc/controllers.xml,web/config.json,web/resource/js
+validator.Unchecked=

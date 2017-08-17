@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sirius.mybatis.mapper.GoodsEvaluateMapper">
+
+
+	<resultMap type="com.sirius.entity.query.GoodsEvaluateQuery"
+		id="GoodsEvaluateQuery">
+		<id column="id" property="id" />
+		<association property="goodsSpecification" column="goods_specification_id"
+			select="com.sirius.mybatis.mapper.GoodsSpecificationMapper.getBaseById" />
+		<association property="shopkeeper" column="shopkeeper_id"
+			select="com.sirius.mybatis.mapper.UserMapper.getBaseById" />
+	</resultMap>
+
+
+	<insert id="insertList">
+		insert into
+		goods_evaluate(goods_id,goods_specification_id,shopkeeper_id,order_id,content,grade)
+		<foreach collection="list" open="values" separator="," close=""
+			item="item">
+			(#{item.goodsId},#{item.goodsSpecificationId},#{item.shopkeeperId},#{item.orderId},#{item.content},#{item.grade})
+		</foreach>
+	</insert>
+
+
+	<select id="goodsEvaluateList" resultMap="GoodsEvaluateQuery">
+		select content,shopkeeper_id,grade,goods_specification_id from
+		goods_evaluate where
+		goods_id=#{goodsId} order by id desc
+		<if test="size != null">limit #{size}</if>
+		<if test="size == null">limit 2</if>
+
+	</select>
+	<select id="goodsEvaluateListMark" resultMap="GoodsEvaluateQuery">
+		select
+		content,shopkeeper_id,grade,goods_specification_id from
+		goods_evaluate
+		where
+		goods_id=#{goodsId} and
+		id&lt;#{markId} order by
+		id desc limit
+		#{size}
+	</select>
+
+</mapper>

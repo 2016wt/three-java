@@ -1,0 +1,274 @@
+/*
+* @Author: dongying
+* @Date:   2016-08-22 17:24:44
+* @Last Modified by:   anchen
+* @Last Modified time: 2016-10-13 15:19:48
+*/
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+*{
+  margin:0;
+  padding:0;
+  outline:none;
+}
+a:link{
+  text-decoration:none;
+}
+a:active{
+  text-decoration:none;
+}
+ input,select{
+  background-color:transparent;
+  border-radius:4px;
+}
+textarea{
+	border-radius:4px;
+	border:solid 1px #ccc;
+	background:#fff;
+}
+em{
+	font-style: normal;
+}
+input{
+  border-radius:4px;
+  text-indent:6px;
+   border: solid 1px #ccc;
+}
+input[type=file]{
+	border:0!important;
+}
+ul{
+  list-style: none;
+}
+body {
+  margin: 0;
+}
+table tr:hover{
+	cursor:pointer;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background-color: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  margin: .67em 0;
+  font-size: 2em;
+}
+mark {
+  color: #000;
+  background: #ff0;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -.5em;
+}
+sub {
+  bottom: -.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  height: 0;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+button {
+  overflow: visible;
+  outline:none;
+}
+a,input,button{ 
+	outline:none;
+    outline-offset:0;
+}
+button:focus,.btn:focus{
+	 outline:none;
+	 outline-offset:0;
+}
+::-moz-focus-inner{
+	border:0px;
+	outline-offset:0;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: not-allowed;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  padding: .35em .625em .75em;
+  margin: 0 2px;
+  border: 1px solid #c0c0c0;
+}
+legend {
+  padding: 0;
+  border: 0;
+}
+textarea {
+  overflow: auto;
+  padding:0 6px;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: 0;
+}
+.top-240{
+	top:240px;
+}
+select {
+  /*ͳһ�߿�*/
+  border: solid 1px #ccc;
+  /*��Ĭ�ϵ�selectѡ�����ʽ���*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  /*�滻ѡ�������Ҳ���ʾС��ͷͼƬ*/
+  background: url(../img/select_icon.png) no-repeat scroll right center transparent;
+  /*Ϊ����С��ͷ����һ��λ�ã����ⱻ���ָ���*/
+  padding-right: 14px;
+ 	color:#00868B;
+}
+/*���ie��Ĭ��ѡ�����ʽ�������������ͷ*/
+select::-ms-expand { display: none; }
+::-webkit-input-placeholder { /* WebKit browsers */ 
+color: #999; 
+} 
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
+color: #999; 
+} 
+::-moz-placeholder { /* Mozilla Firefox 19+ */ 
+color: #999; 
+} 
+:-ms-input-placeholder { /* Internet Explorer 10+ */ 
+color: #999; 
+} 
+.table td,.table th{
+	word-break:break-word;
+}

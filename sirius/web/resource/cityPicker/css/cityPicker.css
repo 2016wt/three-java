@@ -1,0 +1,117 @@
+.picker-main{
+    width:324px;
+    position: absolute;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color:#fff;
+    padding-bottom:10px;
+    z-index: 999999;
+}
+
+.picker-main ul{
+    list-style: none;
+    margin:0;
+    padding:10px 0;
+    padding-top:0;
+}
+
+.picker-header{
+    height:40px;
+    background-color: #cecece;
+}
+
+.picker-header li{
+    height: 40px;
+    text-align: center;
+    color: #fff;
+    float: left;
+    line-height: 40px;
+    width: 110px;
+    cursor: pointer;
+    transition:color 1s;
+}
+
+.picker-header li:hover{
+    color: #00868B;
+}
+
+.picker-header-active{
+    background-color: #fff;
+    color: orange !important;
+}
+
+.picker-content li{
+    float: left;
+    width: 100px;
+    text-align: center;
+    height: 29px;
+    line-height: 30px;
+    cursor: default;
+    transition: color;
+}
+
+.picker-content li:hover{
+    color:#aaa;
+}
+
+.file {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    margin-left:188px;
+}
+.file label {
+    display: inline-block;
+}
+.userdefined-file {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    z-index: 2;
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 0;
+    margin-left:20px;
+}
+.userdefined-file input[type="text"] {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 14px;
+    padding-left: 14px;
+    width: 220px;
+    box-sizing: border-box;
+    border: 1px solid #00868B;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.userdefined-file button {
+    display: inline-block;
+    vertical-align: middle;
+    width: 80px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    background-color: #00868B;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius:4px;
+    margin-left:-1px;
+}
+.file input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    z-index: 3;
+    opacity: 0;
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;

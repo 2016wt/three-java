@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sirius.mybatis.mapper.OrderContentMapper">
+
+	<resultMap type="com.sirius.entity.query.OrderContentQuery"
+		id="OrderContentQuery">
+		<association property="goods" column="goods_id"
+			select="com.sirius.mybatis.mapper.GoodsMapper.getById" />
+	</resultMap>
+	<resultMap type="com.sirius.entity.query.OrderContentQuery" id="DataOrderContentQuery">
+		<id column="id" property="id" />
+		
+	</resultMap>
+
+	<insert id="insertList">
+		insert
+		into
+		order_content(son_order_no,order_id,goods_id,goods_specification_id,number,money)
+		<foreach collection="list" open="values" separator="," close=""
+			item="item">
+			(#{item.sonOrderNo},#{item.orderId},(select goods_id from
+			goods_specification where
+			id=#{item.goodsSpecificationId}),#{item.goodsSpecificationId},#{item.number},#{item.money})
+		</foreach>
+	</insert>
+
+
+	<select id="findByGoods" resultMap="OrderContentQuery">
+		select x.*,
+		goods_specification.size,goods_specification.color from (select
+		goods_specification_id,goods_id,sum(number) gross from order_content
+		left join `order` on order_content.order_id = `order`.id
+		where
+		`order`.status=1
+		group by goods_specification_id,goods_id
+		)x
+		left join
+		goods_specification on x.goods_specification_id =
+		goods_specification.id
+	</select>
+	<select id="findByGoodsWholesaler" resultMap="OrderContentQuery">
+		select x.*,
+		goods_specification.size,goods_specification.color from (select
+		goods_specification_id,goods_id,sum(number) gross from order_content
+		left join `order` on order_content.order_id = `order`.id
+		where
+		`order`.shopkeeper_id=#{0}
+		and `order`.status=1
+		group by
+		goods_specification_id,goods_id
+		)x
+		left join
+		goods_specification on
+		x.goods_specification_id =
+		goods_specification.id
+	</select>
+	<!-- 订单详情 -->
+	<select id="dataContent" resultMap="DataOrderContentQuery">
+		select * 
+		from order_content 
+		where goods_id in (
+		select id 
+		from goods 
+		where wholesaler_id=#{wholesalerId}) 
+		and order_id=#{orderId}
+	</select>
+	<select id="dataCountContent" resultType="java.lang.Integer">
+		select count(1) 
+		from order_content 
+		where goods_id in (
+		select id 
+		from goods 
+		where wholesaler_id=#{wholesalerId}) 
+		and order_id=#{orderId}
+	</select>
+	
+	<!-- 订单商品标注异常 -->
+	<update id="updateError">
+		update order_content set error=#{error} 
+		where goods_specification_id in(
+		select id from goods_specification 
+		where sku in 
+		<foreach collection="sku" open="(" separator="," close=")" item="s">
+			#{s}
+		</foreach>
+		) 
+	</update>
+	
+	<!-- 根据orderNo获得商品信息 -->
+	<select id="getOrderContentByOrderNo" resultType="com.sirius.entity.query.GoodsSpecificationQuery">
+		select 
+		sku,
+		color,
+		size,
+		(select img_url from goods_img where goods_id in(goods_specification.goods_id) limit 1)imgUrl,
+		(select number from order_content where goods_specification_id=goods_specification.id and wholesaler_id=#{userId})num,
+		(select money from order_content where goods_specification_id=goods_specification.id and order_id=(select id from `order` where order_no=#{orderNo}))singlePrice,
+		((select count(1) from order_content where order_id=(select id from `order` where order_no=#{orderNo}) and goods_specification_id=goods_specification.id)*
+		(select money from order_content where goods_specification_id=goods_specification.id and order_id=(select id from `order` where order_no=#{orderNo}))
+		)totalPrice 
+		from goods_specification where id in(select goods_specification_id 
+		from order_content where wholesaler_id=#{userId} and status=#{status} 
+		and order_id=(select id from `order` where order_no=#{orderNo} and status=#{status}))
+				
+	</select>
+	<!--根据sku集合获得商品信息  -->
+	<select id="getOrderContentBySku" resultType="com.sirius.entity.query.GoodsSpecificationQuery">
+		select 
+		sku,
+		color, 
+		size,
+		(select img_url from goods_img where goods_img.goods_id=goods_specification.goods_id limit 1)imgUrl
+		from goods_specification where id in(select goods_specification_id  
+		from stock where error=0 and outed=0 
+		<if test="sku !=null">
+			and sku in
+			<foreach collection="sku" open="(" separator="," close=")" item="s">
+				#{s}
+			</foreach>
+		</if> 
+		)
+	</select>
+	
+</mapper>

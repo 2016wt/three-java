@@ -1,0 +1,31 @@
+﻿/*
+ * Copyright (C) 2010 The MobileSecurePay Project
+ * All right reserved.
+ * author: shiqun.shi@alipay.com
+ * 
+ *  提示：如何获取安全校验码和合作身份者id
+ *  1.用您的签约支付宝账号登录支付宝网站(www.alipay.com)
+ *  2.点击“商家服务”(https://b.alipay.com/order/myorder.htm)
+ *  3.点击“查询合作者身份(pid)”、“查询安全校验码(key)”
+ */
+
+package com.sirius.alipay.util;
+
+//
+// 请参考 Android平台安全支付服务(msp)应用开发接口(4.2 RSA算法签名)部分，并使用压缩包中的openssl RSA密钥生成工具，生成一套RSA公私钥。
+// 这里签名时，只需要使用生成的RSA私钥。
+// Note: 为安全起见，使用RSA私钥进行签名的操作过程，应该尽量放到商家服务器端去进行。
+public final class Keys {
+
+	// 合作身份者id，以2088开头的16位纯数字
+	public static final String DEFAULT_PARTNER = "2088221266142143";
+
+	// 收款支付宝账号
+	public static final String DEFAULT_SELLER = "18516978876@163.com";
+
+	// 商户私钥，自助生成
+	public static final String PRIVATE = "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs77tu00+tOtDJgy4U34KTJDkEfZncQY74n4PTX2I1huzse/fLm80fXFrw4y2LFQ7KQyuv9vkI8XUjmbNMqhGOK290E6ruzdLaOX/vaZl1VXmjOEj5sZJrOfDjJulXt6cKwaeRsjqh5VAOAo6CLwsk1rC1f1DGu6k7qTZIbXUwshtef7ogSOQFQ9Ze9+tjSO9VheNoNU4QgmariUi9zigQ17x8mW6sJaFV+tkZ4hISDY7oxU6eVP1WojDXShOkyfnzRhHDf6O2PVVxB8ajAPbIE6ePGYy6/1Dr62QwRYPqdFezZqLe0/blH2qSLAkHUJmMbe1OpjF+TQvyNLGqWfI5AgMBAAECggEALqX4ahZyfnGw/6uzG+rxg1TDYQ31h/bkVjDZvHjwFgfNh7XUkKLJHN6LDRg9ND/eHJZi+I8QcuFPJcYyFer579q/Y8QniEK/u7VMae+Jhh9hBnCjdX2vjSroMWDM2jdPTP/ZpQbJImzKeSeptRncANHAEsvRNH9oD1X+WP4r730QhZkknFfRtmBSpIRfVHJTuvSNq0F2RvJT0y4dhpSWFQYmE3RCgZ6HMrO3GAP9QOIOBejnwiefrRirJYDbcqtM0bJUr2s3/QJXo0BFHjRaRIUSBwbRquS651IPAVvxuWMapB6SKGxGPYyU5nx5tN6WsebRYlWiroMPy7kGrCsnrQKBgQD64LQosqKdiuoKOssZuukVvaxjPSMnK6wvk/IDG78yd6tjz8REL9ER+5M6c53zQNOKFbZJRFjMJ4H42MWR8Ee9JFjacn5W2zG7IGB7ieffbBbMlcIlA3pq6ZEnsFv3LwyTIDde2/yHeRDC2reN4VpTIvlfv2PwUlFuwu168aMxHwKBgQDxxijabmAFADuUiDChoLkMdU1L33TtK5NRbhiTz18e/jctXxyDO+Nf2c0llsn6VVtzoixpOgPGRR84zeOK+t4bxjGjSuVqnJTTXTbZzNywF8UX152qdytDiRvfJH0uG1tOvRpjW+Vy/zJg8duHKimNF+a6frYpXEeEXmH4dWs5pwKBgQDUS4Xo0pFtQ3odQfdQRKytKx5PtBKlOP2yHT20h6xZ5o5wHgb1tIj08LB7zA6jI/5eYVUp1t5VlDEWBUna3zu1wKY35J8onMAOm61JnT9L/0mjwi7R54mWIyQkM8b++x9m+OIiMYIWmconObIOK96lb3kbHvhRCzfBxM31Nblk/QKBgH25rkToYMY4+MKkj6V9Dr2LwkZSTVuH7XPK7LzweWaEi+zsKMeVvQd7G1MQtreW65eWHcIaiRvxlerUJh9/lUCcL/PaXrKx+jJvprZb8ecgdT2QwkyC69yS0AuZzf7L+w9XBwHkJ81FJ82B98ayBil45GLWwaOAeTA8ZHXvmXLBAoGAIfjClXw35kXcpdTvrSQqhH3ZpHqHrfhgqA0fw6dClyJgPlUFhbUDP682yjJfwcXKBi3u5THWLc9Dfzi0iWLd2yNCu5LZjzixubuZF0IuaxMbkQ2FyJnY3/VqXV5lcEc5C9L74ou9n8x+Dl24ENdw1c9TvoTx7AVyzW65q0wXmfo=";
+
+	public static final String PUBLIC = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDDI6d306Q8fIfCOaTXyiUeJHkrIvYISRcc73s3vF1ZT7XN8RNPwJxo8pWaJMmvyTn9N4HQ632qJBVHf8sxHi/fEsraprwCtzvzQETrNRwVxLO5jVmRGi60j8Ue1efIlzPXV9je9mkjzOmdssymZkh2QhUrCmZYI/FCEa3/cNMW0QIDAQAB";
+
+}

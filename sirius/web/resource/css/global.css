@@ -1,0 +1,2007 @@
+@charset "UTF-8";
+
+/*
+* @Author: dongying
+* @Date:   2016-10-12 10:24:53
+* @Last Modified by:   anchen
+* @Last Modified time: 2016-11-15 18:08:20
+*/
+html,body {
+	font-family: 'Open Sans', 'Microsoft YaHei', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	padding-right: 0 !important;
+	min-width: 1320px;
+	overflow-y: auto;
+}
+
+table {
+	font-size: 14px;
+}
+
+body.modal-open {
+	overflow: auto !important;
+}
+
+em {
+	font-style: normal;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+input:disabled {
+	border: none;
+	color: #999;
+}
+
+textarea:disabled {
+	border: none;
+	color: #999;
+	background-color: #fff;
+}
+
+/*页面整体内容*/
+#createTimeStart {
+	margin-right: 10px;
+}
+/*承运商首页高度*/
+#content-wrapper .announ-info-box,#content-wrapper .schedule-box {
+	
+}
+/*发运方首页高度*/
+#content-wrapper .shipper-container {
+	
+}
+
+#content-wrapper>.widget-box>.widget-title {
+	border-bottom: 1px solid #d5d5d5;
+	background-image: -webkit-linear-gradient(top, #fdfdfd 0%, #9fa1aa 100%);
+	background-image: -ms-linear-gradient(top, #fdfdfd 0%, #9fa1aa 100%);
+	background-image: -moz-linear-gradient(top, #fdfdfd 0%, #9fa1aa 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,
+		startColorstr=#fdfdfd, endColorstr=#9fa1aa);
+}
+
+#content-wrapper>.widget-box>.widget-title span,#content-wrapper>.widget-box>.widget-title h5
+	{
+	display: inline-block;
+}
+
+#content-wrapper>.widget-box>.widget-title>span.icon {
+	border-right: 1px solid #cdcdcd;
+	padding: 9px 10px 7px 11px;
+	opacity: 0.7;
+	color: #0b6e7a;
+}
+
+#content-wrapper>.widget-box>.widget-title>h5 {
+	color: #040644;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 12px;
+	margin: 0;
+}
+
+#content-wrapper>.widget-box>.widget-content {
+	padding: 12px 15px;
+	background-color: #fff;
+}
+
+@media ( max-width : 1850px) {
+	#content-wrapper {
+		width: 86%;
+	}
+}
+
+@media ( max-width : 1676px) {
+	#content-wrapper {
+		width: 83%;
+	}
+}
+
+/*审核的tab*/
+.query-term>.nav-tabs>li>a {
+	color: #843edb;
+	outline: none;
+	border-radius: 4px;
+}
+
+.query-term>.nav-tabs>li>a:hover {
+	outline: none;
+	border-color: #ddd;
+	border-bottom: 0 none;
+	color: #7266ba;
+}
+
+.query-term>.nav-tabs>li.active>a {
+	color: #7266ba;
+}
+
+.query-term>.nav-tabs>li.active>a:hover {
+	color: #7266ba;
+	border-bottom: 0 none;
+}
+
+.query-term>.tab-content {
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-top: none;
+	border-bottom: none;
+}
+
+.query-result table,.query-result th,.query-result td {
+	text-align: center;
+	vertical-align: middle !important;
+	font-size: 14px;
+}
+
+.query-result th[rowspan="2"] {
+	vertical-align: middle;
+}
+
+/*搜索条件*/
+.search-group {
+	display: inline-block;
+	margin-right: 13px;
+	margin-bottom: 20px;
+	position: relative;
+	float: left;
+}
+
+.left {
+	display: inline-block;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	position: relative;
+	margin-bottom: 20px;
+	float: left;
+}
+
+.search-groups {
+	float: right;
+	margin-right: 4px;
+	margin-bottom: 20px;
+}
+
+.search-group .btn,.search-groups .btn {
+	margin-right: 13px;
+	background-color: #00868B;
+	color: #fff;
+}
+
+.search-group label,.search-group input,.search-group select,.search-group .selectText
+	{
+	padding: 0 10px;
+	height: 30px;
+	line-height: 30px;
+	display: inline-block;
+}
+
+.search-group label {
+	min-width: 80px;
+	background-color: #00868B;
+	color: #fff;
+	vertical-align: top;
+}
+
+.search-group input,.search-group select,.search-group .selectText {
+	border: 1px solid #ddd;
+	margin-left: -10px;
+	outline: none;
+	width: 140px;
+}
+
+.search-group input[type='checkbox'] {
+	width: 17px;
+	height: 17px;
+}
+
+.search-group input#comName {
+	width: 200px;
+}
+
+.search-group input#commitDate+span {
+	margin-right: 10px;
+}
+
+.search-group button,.search-group a {
+	margin-right: 13px;
+}
+
+.search-group button i,.search-group a i {
+	margin-right: 4px;
+}
+
+.search-group button.moreItem {
+	border: none;
+	background-color: transparent;
+	outline: none;
+}
+
+.search-group select {
+	width: 140px;
+	padding-right: 0;
+}
+
+.search-group input[type="radio"] {
+	width: 20px;
+	height: 20px;
+}
+
+.search-group input.selectDate {
+	width: 140px;
+}
+
+.search-group input.selectDate+span {
+	margin: 0 4px;
+}
+
+.search-group .venus-menu {
+	top: 30px;
+	left: 78px;
+	width: 142px;
+}
+
+.search-group .carType {
+	height: 200px;
+	overflow-y: auto;
+}
+/*所属组织*/
+.org-box {
+	width: 330px;
+}
+
+.org-box .orgnation {
+	width: 250px;
+}
+
+.org-box .orgnation+.venus-menu {
+	width: 250px;
+	height: 200px;
+	overflow-y: auto;
+}
+
+.org-box .orgnation+.venus-menu li {
+	overflow: auto;
+}
+
+.org-box .orgnation+.venus-menu label {
+	font-size: 14px;
+	width: 90%;
+}
+/*更多筛选条件*/
+.more-part {
+	margin: 15px 0;
+	line-height: 30px !important;
+	/*专线查询*/
+}
+
+.more-part .selectDate {
+	width: 150px;
+}
+
+.more-part input.selectDate+span {
+	margin: 0 4px;
+}
+
+.more-part div.addr input {
+	width: 220px;
+}
+
+.more-part>.hasCheckbox {
+	margin-left: 40px;
+}
+
+.more-part>.hasCheckbox>input[type='checkbox'] {
+	width: 17px;
+	height: 17px;
+	vertical-align: middle;
+}
+
+.more-part>.hasCheckbox label {
+	background-color: #fff;
+	color: #333;
+	font-weight: normal;
+	vertical-align: top;
+	min-width: 0;
+	padding: 0;
+	margin: -2px 4px 0 0;
+}
+
+.more-part div.hasCheckbox:last-child {
+	margin-left: 20px;
+}
+
+.alertInfo {
+	position: absolute;
+	width: 175px;
+	line-height: 20px;
+	display: inline-block;
+	left: 220px;
+	top: 33px;
+	color: red;
+	display: none;
+	font-size: 12px;
+}
+
+.labelContent {
+	position: relative;
+	display: block;
+	line-height: 36px;
+	margin-bottom: 30px;
+}
+
+.labelContent label {
+	height: 36px;
+	line-height: 36px;
+	min-width: 80px;
+	text-align: right;
+	font-weight: normal;
+}
+
+.labelContent em {
+	color: rgb(112, 121, 101);
+}
+
+.labelContent label.reqItem:before {
+	content: "*";
+	color: red;
+}
+
+.labelContent input,.labelContent select {
+	height: 32px;
+	line-height: 32px;
+	width: 320px;
+	border-color:#00868B;
+}
+
+.labelContent input[type='checkbox'] {
+	height: 15px;
+	width: 15px;
+}
+
+.labelContent .venus-menu {
+	left: 85px;
+	top: 33px;
+	width: 139px;
+}
+
+/*下拉菜单*/
+
+/*搜索输入框后的下拉小标*/
+.selectText {
+	position: relative;
+	cursor: pointer;
+	background: url(../img/select_icon.png) no-repeat;
+	background-position: right 8px;
+}
+
+i.caretFlag {
+	position: absolute;
+	right: 8px;
+	top: 9px;
+}
+
+/*下拉菜单结构*/
+.venus-menu {
+	list-style: none;
+	position: absolute;
+	border: 1px solid #ddd;
+	line-height: 30px;
+	background: #fff;
+	z-index: 100;
+}
+
+.venus-menu li {
+	display: inline-block;
+	width: 100%;
+	padding-left: 10px;
+	color: #707070;
+}
+
+.venus-menu li:hover {
+	background-color: #eae6e6;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.venus-menu li label {
+	background-color: transparent;
+	font-size: 12px;
+	font-weight: normal;
+	color: #c0c0c0;
+	min-width: 0;
+}
+
+.venus-menu li input[type="checkbox"] {
+	width: 18px;
+	height: 18px;
+}
+
+/*专线管理表格*/
+#lineResult table {
+	table-layout: fixed;
+}
+
+/*专线编辑页*/
+#editLineContent {
+	width: 1000px;
+	margin: 20px auto;
+}
+
+#editLineContent>.labelContent {
+	display: inline-block;
+	margin-bottom: 16px;
+}
+
+#editLineContent>.labelContent input {
+	width: 60px;
+}
+
+#editLineContent>.labelContent input.station {
+	width: 300px;
+}
+
+#editLineContent>.labelContent input[type="checkbox"] {
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+	margin-top: 0;
+}
+
+#editLineContent>.goods-flag {
+	margin-left: 50px;
+}
+
+#editLineContent>.goods-flag label {
+	min-width: 1px;
+	padding: 0;
+	margin: 0 16px 0 0;
+	vertical-align: middle;
+}
+
+#editLineContent>.quotatioContent {
+	clear: both;
+	margin-left: 50px;
+}
+
+#editLineContent>.quotatioContent h4 {
+	font-size: 16px;
+	color: #ea6d40;
+}
+
+#editLineContent>.quotatioContent>.quotatioInfo {
+	float: left;
+	width: 415px;
+}
+
+#editLineContent>.quotatioContent>.quotatioInfo>.labelContent {
+	margin-left: 80px;
+	margin-bottom: 16px;
+}
+
+#editLineContent>.quotatioContent>.quotatioInfo>.labelContent label {
+	width: 160px;
+	text-align: left;
+}
+
+#editLineContent>.quotatioContent>.quotatioInfo>.labelContent input {
+	width: 60px;
+}
+
+#editLineContent>.quotatioContent>.quotatioInfo .labelContent:last-child
+	{
+	margin-bottom: 0;
+}
+
+#editLineContent>.quotatioContent .quotatioInfo:nth-of-type(2) {
+	border-left: 1px solid #ea6d40;
+	padding-left: 20px;
+}
+
+#editLineContent>.editInfo-footer {
+	width: 232px;
+	margin: 20px auto;
+}
+
+#editLineContent>.editInfo-footer button {
+	margin-right: 10px;
+}
+
+/*审核内容*/
+.verify-fail-reason {
+	background-color: #ccc;
+	padding: 4px 10px;
+	margin: -12px -15px;
+}
+
+.verify-fail-reason h5 {
+	color: #ee0f1a;
+}
+
+.verify-fail-reason ul {
+	margin-left: 20px;
+}
+
+.verify-fail-reason ul li {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.verify-content {
+	width: 700px;
+	margin: 20px auto;
+}
+
+.verify-content>table {
+	text-align: center;
+}
+
+.verify-content>table td {
+	vertical-align: middle !important;
+}
+
+.verify-content>table tr td:first-child {
+	color: #6e9445;
+}
+
+.verify-content>table tr td:last-child {
+	color: #090909;
+}
+
+.verify-content>table img,.verify-content>table a {
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.verify-content>table img {
+	width: 85px;
+	height: 60px;
+}
+
+.verify-content>table a:hover {
+	cursor: pointer;
+}
+
+.verify-content>.verify-footer {
+	width: 400px;
+	margin: 10px auto;
+}
+
+.verify-content>.verify-footer>button {
+	width: 120px;
+	margin-right: 10px;
+	line-height: 28px;
+}
+
+.verify-content .footerBtn {
+	width: 200px;
+}
+
+/*查看大图*/
+#viewPicture .modal-dialog {
+	width: 50%;
+}
+
+#viewPicture .modal-body {
+	height: 400px;
+	margin: 0 auto;
+}
+
+#viewPicture img {
+	max-width: 100%;
+}
+
+/*编辑车辆信息*/
+.editContent .inputDisabled,.editContent input:disabled {
+	border: none;
+	color: #999;
+}
+
+div.car-source {
+	margin-bottom: 10px;
+}
+
+div.car-source em {
+	color: rgb(112, 121, 101);
+	display: block;
+}
+
+div.car-source input[type='radio'] {
+	width: 15px;
+	height: 15px;
+	outline: none;
+	vertical-align: middle;
+}
+
+div.car-source select {
+	width: 120px;
+	height: 32px;
+}
+
+div.car-source label {
+	font-weight: normal;
+	vertical-align: top;
+	min-width: 0;
+	margin: 3px 10px 0 0;
+}
+
+fieldset {
+	border-radius: 4px;
+	margin-bottom: 20px;
+}
+
+fieldset>legend {
+	width: auto;
+	font-size: 14px;
+	padding: 6px 10px;
+	background-color: #d88863;
+	border-radius: 4px;
+	color: #fff;
+	margin-bottom: 0;
+}
+
+fieldset>.labelContent {
+	display: inline-block;
+	margin: 0 16px 16px 0;
+}
+
+fieldset>.labelContent input {
+	width: 240px;
+}
+
+fieldset>.labelContent select {
+	width: 140px;
+	height: 32px;
+}
+
+fieldset>.labelContent input.numInfo {
+	width: 80px;
+}
+
+fieldset>.labelContent input.numInfo+span {
+	color: #db4a2a;
+}
+
+fieldset .labelContent:first-child {
+	margin-top: 20px;
+}
+
+fieldset div.addr {
+	display: block;
+}
+
+fieldset div.addr input {
+	width: 220px;
+}
+
+fieldset div.addr input:nth-of-type(2) {
+	width: 320px;
+}
+
+fieldset div.carDetailsInfo {
+	width: 226px;
+}
+
+fieldset div.carDetailsPic {
+	margin-bottom: -30px;
+}
+
+fieldset div.carDetailsPic>.labelContent {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+fieldset div.carDetailsPic>.labelContent label {
+	vertical-align: top;
+}
+
+fieldset div.carDetailsPic>.labelContent .picContent {
+	position: relative;
+	text-align: center;
+	line-height: 140px;
+	display: inline-block;
+	width: 140px;
+	height: 140px;
+	border: 1px dashed #ccc;
+	cursor: pointer;
+}
+
+fieldset div.carDetailsPic>.labelContent .picContent img {
+	margin-top: -5px;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+fieldset div.pull-right button {
+	line-height: 26px;
+	margin-right: 20px;
+}
+
+div.editDriver-footer {
+	width: 400px;
+	margin: 10px auto;
+}
+
+div.editDriver-footer button {
+	width: 100px;
+	line-height: 28px;
+	margin-right: 10px;
+}
+
+#uploadPic .modal-dialog {
+	width: 930px;
+}
+
+#uploadPic .modal-content .picArea {
+	width: 485px;
+	margin: 10px auto;
+	position: relative;
+}
+
+#uploadPic .modal-content .picArea input {
+	line-height: 32px;
+	height: 32px;
+	width: 80px;
+}
+
+#uploadPic .modal-content .picArea input[type='text'] {
+	width: 400px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+#uploadPic .modal-content .picArea input[type="button"] {
+	margin-left: -4px;
+	background: #2399a8;
+	color: #fff;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	vertical-align: top;
+	border: none;
+	cursor: pointer;
+}
+
+#uploadPic .modal-content .picArea input[type="file"] {
+	position: absolute;
+	font-size: 12px;
+	top: 0;
+	right: 0;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+#uploadPic .modal-content .image_container {
+	/* display:none; */
+	margin: 20px auto;
+	width: 480px;
+	height: 240px;
+	border: solid 0px #ccc;
+}
+
+#uploadPic .modal-content #preview {
+	width: 100%;
+	height: 100%;
+}
+
+#uploadPic .modal-footer {
+	width: 450px;
+	border: none;
+	margin: -20px auto 0;
+	text-align: center;
+}
+
+/*新建公告*/
+#create-announment .labelContent {
+	line-height: 0;
+	margin-bottom: 10px;
+}
+
+#create-announment .labelContent label {
+	margin-right: 10px;
+}
+
+#create-announment .labelContent input#afficheTitle {
+	width: 400px;
+}
+
+#create-announment .labelContent label#announContent {
+	vertical-align: top;
+}
+
+#create-announment .labelContent #editor {
+	display: inline-block;
+	margin-left: 90px;
+	margin-top: -32px;
+}
+
+#create-announment .labelContent:first-child {
+	margin-top: 20px;
+}
+
+#create-announment .announ-footer {
+	width: 400px;
+	margin: 20px auto;
+}
+
+#create-announment .announ-footer a,#create-announment .announ-footer button
+	{
+	line-height: 26px;
+	width: 80px;
+	margin-right: 10px;
+}
+
+/*公告详情*/
+#afficheModal .modal-dialog,#afficheModalUpdate .modal-dialog {
+	width: 70%;
+	min-width: 840px;
+}
+
+article.annDetail {
+	width: 800px;
+	margin: 0 auto;
+}
+
+article.annDetail>h1 {
+	text-align: center;
+}
+
+article.annDetail>div.pull-right {
+	margin-bottom: 6px;
+}
+
+article.annDetail>div.pull-right>span {
+	margin-right: 4px;
+}
+
+article.annDetail>p {
+	clear: both;
+	line-height: 28px;
+	word-spacing: 4px;
+}
+
+/*个人中心*/
+#personCenter,#modifyRegInfo {
+	width: 900px;
+	margin: 0 auto;
+}
+
+#modifyRegInfo {
+	width: 1000px;
+	margin-left: 10px;
+}
+
+#personCenter  .labelContent {
+	line-height: 0;
+	margin-bottom: 0;
+	margin-top: 10px;
+}
+
+#personCenter  .labelContent:nth-of-type(2) {
+	margin-left: 30px;
+}
+
+#personCenter label.comContents {
+	vertical-align: top;
+	margin-top: 10px;
+}
+
+#personCenter label.comContact {
+	letter-spacing: 3px;
+}
+
+#personCenter>.labelContent span.qualifyInfo {
+	color: #165695;
+	font-weight: bold;
+}
+
+#personCenter>.labelContent span.qualifyInfo i {
+	font-size: 18px;
+	margin-right: 6px;
+}
+
+#modifyRegInfo  .labelContent span.qualifyInfo i.fa-certificate
+#personCenter>.labelContent span.qualifyInfo i.fa-certificate {
+	color: #0ab582;
+}
+
+#modifyRegInfo   .labelContent span.qualifyInfo i.fa-times-circle,#personCenter>.labelContent span.qualifyInfo i.fa-times-circle
+	{
+	color: #f90f0f;
+}
+
+#modifyRegInfo   .labelContent span.qualifyInfo i.fa-times-circle {
+	font-size: 24px;
+	margin-right: 6px;
+	vertical-align: middle;
+}
+
+#personCenter>.labelContent span.qualifyFlag {
+	background: url("../img/company_icon.png") no-repeat;
+	background-position: 0;
+	background-size: 30% 100%;
+	padding-left: 20px;
+	color: #165695;
+}
+
+#personCenter input {
+	width: 140px;
+}
+
+#personCenter textarea#comContent {
+	margin-top: 20px;
+	padding: 0 10px;
+	resize: none;
+	height: 160px;
+	width: 650px;
+	wrap: virtual;
+	line-height: 20px;
+	background: #fff;
+}
+
+#personCenter textarea#comContent:disabled {
+	height: auto !important;
+}
+
+#modifyRegInfo  .contactInfo,#personCenter  .contactInfo {
+	display: inline-block;
+}
+
+#personCenter  div.addr {
+	position: relative;
+	height: 41px;
+	margin-top: 0;
+}
+
+#personCenter  div.addr i {
+	cursor: pointer;
+}
+
+#personCenter  div.addr i.fa-map-marker:before {
+	display: inline-block;
+	font-size: 20px;
+	color: red;
+	margin: -15px -30px;
+}
+
+#personCenter  div.addr>input {
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+#personCenter  div.addr>input:nth-of-type(2):disabled {
+	margin-left: -10px;
+}
+
+#personCenter  div.addr input.ipt_one {
+	width: 170px;
+}
+
+#personCenter  div.addr input.ipt_two {
+	width: 500px;
+}
+
+#modifyRegInfo .labelContent {
+	margin-bottom: 16px;
+}
+
+#modifyRegInfo .qualifyInfo {
+	margin-left: 16px;
+}
+
+#modifyRegInfo .qualifyInfo:last-child {
+	color: rgb(112, 121, 101);
+	font-weight: bold;
+}
+
+#modifyRegInfo .labelContent label {
+	min-width: 110px;
+	margin-right: 10px;
+}
+
+#modifyRegInfo .card-box,#baseInfo-form .card-box {
+	display: inline-block;
+}
+
+#modifyRegInfo .contactInfo input {
+	width: 180px;
+}
+
+#modifyRegInfo .fail-info {
+	color: red;
+}
+/*修改密码*/
+#modifyPwd {
+	width: 400px;
+	margin: 20px auto;
+}
+
+#modifyPwd input {
+	width: 220px;
+}
+
+#modifyPwd>div.editInfo-footer {
+	width: 70px;
+	margin: 60px auto 0;
+}
+
+/*地图模态框内容*/
+#addrMap .modal-dialog {
+	min-width: 600px;
+	width: 70%;
+	max-width: 960px;
+}
+
+div.editInfo-footer {
+	width: 200px;
+	margin: 20px auto;
+}
+
+div.editInfo-footer .btn {
+	width: 80px;
+	margin-right: 10px;
+}
+
+/*用户权限管理*/
+.userInfo-box {
+	height: auto !important;
+}
+
+/*地址输入框*/
+input#selectCity {
+	width: 200px;
+}
+
+#editNetworkContent,#editSource,#editMerchant,#editUserInfo {
+	width: 900px;
+	margin: 20px auto;
+}
+
+#editNetworkContent input[type="text"],#editSource input[type="text"],#editMerchant input[type="text"],#editUserInfo input[type="text"],#editNetworkContent select,#editSource select,#editMerchant select,#editUserInfo select
+	{
+	width: 140px;
+}
+
+#editNetworkContent input[type="checkbox"],#editSource input[type="checkbox"],#editMerchant input[type="checkbox"],#editUserInfo input[type="checkbox"]
+	{
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+}
+
+#editNetworkContent input#branchName,#editNetworkContent div.addr>input,#editSource input#branchName,#editSource div.addr>input,#editMerchant input#branchName,#editMerchant div.addr>input,#editUserInfo input#branchName,#editUserInfo div.addr>input
+	{
+	width: 300px;
+}
+
+#editSource div.addr .city-select-content {
+	left: 83px;
+}
+
+#editNetworkContent>.editInfo-footer,#editSource>.editInfo-footer,#editMerchant>.editInfo-footer,#editUserInfo>.editInfo-footer
+	{
+	width: 800px;
+	margin: 20px auto;
+}
+
+#editNetworkContent>.editInfo-footer .btn,#editSource>.editInfo-footer .btn,#editMerchant>.editInfo-footer .btn,#editUserInfo>.editInfo-footer .btn
+	{
+	margin-right: 10px;
+}
+
+#editNetworkContent .provideService label,#editSource .provideService label
+	{
+	min-width: 0;
+	vertical-align: middle;
+	margin-bottom: -3px;
+	margin-right: 10px;
+}
+
+#editNetworkContent .provideService label:nth-of-type(1),#editSource .provideService label:nth-of-type(1)
+	{
+	min-width: 80px;
+}
+
+#editSource input.comName,#editMerchant input.comName {
+	width: 370px;
+}
+
+#editSource .editInfo,#editMerchant .editInfo {
+	display: inline-block;
+}
+
+#modifyRegInfo .picContent,#editSource .picContent,#editMerchant .picContent,#baseInfo-form .picContent
+	{
+	position: relative;
+	text-align: center;
+	line-height: 140px;
+	/*  display: inline-block; */
+	width: 140px;
+	height: 140px;
+	border: 1px dashed #ccc;
+	cursor: pointer;
+	margin-left: 83px;
+}
+
+#modifyRegInfo .picContent img,#editSource .picContent img,#editMerchant .picContent img,#baseInfo-form .picContent img
+	{
+	margin-top: -5px;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#modifyRegInfo .picContent,#baseInfo-form .picContent {
+	margin-left: 123px;
+}
+
+#modifyRegInfo .label-align,#editSource .label-align,#editMerchant .label-align
+	{
+	vertical-align: top;
+}
+
+#modifyRegInfo .label-align+textarea,#editSource .label-align+textarea,#editMerchant .label-align+textarea
+	{
+	width: 600px;
+	height: 110px;
+	resize: none;
+	padding: 6px 10px;
+}
+
+#editSource div.editInfo-footer {
+	width: 400px;
+}
+
+#editMerchant input[type="checkbox"]+label {
+	font-size: 14px;
+}
+
+#editMerchant div.editInfo-footer {
+	width: 400px;
+}
+
+#editUserInfo .labelContent {
+	display: inline-block;
+	margin-bottom: 16px;
+}
+
+#editUserInfo div.roleContainer label {
+	vertical-align: top;
+}
+
+#editUserInfo div.roleContainer div.selectUserRole {
+	display: inline-block;
+	height: 100px;
+	width: 600px;
+	border: 1px solid #ddd;
+	padding: 0 10px;
+	border-radius: 4px;
+}
+
+#editUserInfo div.roleContainer div.selectUserRole>div.roleBox {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#editUserInfo div.roleContainer div.selectUserRole>div.roleBox>input[type="checkbox"]
+	{
+	margin-top: -4px;
+}
+
+#editUserInfo div.roleContainer div.selectUserRole>div.roleBox>label {
+	min-width: 0;
+	vertical-align: middle;
+}
+
+#editUserInfo div.viewRoleContainer {
+	margin-bottom: 16px;
+}
+
+#editUserInfo div.viewRoleContainer a {
+	display: inline-block;
+	border-bottom: 1px solid;
+	margin: 10px 10px;
+}
+
+#editUserInfo div.viewRoleContainer table.showRole {
+	display: none;
+	width: 850px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 4px;
+	vertical-align: middle;
+}
+/*模拟对角线*/
+.out {
+	border-top: 5em #dff0d8 solid; /*上边框宽度等于表格第一行行高*/
+	border-left: 120px #cec8d2 solid; /*左边框宽度等于表格第一行第一格宽度*/
+	position: relative; /*让里面的两个子容器绝对定位*/
+	color: #333;
+	font-size: 14px;
+	letter-spacing: 2px;
+}
+
+.out b {
+	font-style: normal;
+	display: block;
+	position: absolute;
+	top: -4.3em;
+	left: -100px;
+	width: 120px;
+	font-size: 14px;
+}
+
+.out em {
+	font-style: normal;
+	display: block;
+	position: absolute;
+	top: -30px;
+	left: -140px;
+	width: 120px;
+	font-size: 14px;
+}
+
+#editUserInfo div.viewRoleContainer table.showRole  th {
+	vertical-align: middle;
+	font-size: 14px;
+	padding: 0 4px;
+}
+
+#editUserInfo div.tipBox {
+	display: block;
+	margin-top: 20px;
+}
+
+#editUserInfo div.tipBox label.tip {
+	vertical-align: top;
+}
+
+#editUserInfo div.tipBox label.tip+textarea {
+	width: 600px;
+	height: 100px;
+	line-height: 22px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	background: transparent;
+	resize: none;
+}
+
+#editUserInfo div.editInfo-footer {
+	width: 400px;
+}
+
+#userDetailsInfo p.comIntro+span {
+	width: 70px;
+	display: inline-block;
+	text-align: right;
+}
+
+#userDetailsInfo ul:nth-last-child(2) li em {
+	color: #960ee9;
+}
+
+/*物流园详情*/
+#detailResource div.modal-dialog,#detailMerchant div.modal-dialog {
+	width: 70%;
+}
+
+div.detail-info ul {
+	margin-left: 20px;
+}
+
+div.detail-info ul li {
+	display: inline-block;
+	min-width: 230px;
+	line-height: 30px;
+}
+
+div.detail-info ul li span {
+	font-weight: bold;
+	color: #1F6029;
+	letter-spacing: 2px;
+}
+
+div.detail-info ul li em {
+	font-weight: normal;
+	margin-left: 10px;
+	color: #000;
+}
+
+div.detail-info ul li em img {
+	display: inline-block;
+	vertical-align: top;
+}
+
+div.detail-info ul:last-child li {
+	width: 100%;
+}
+
+div.detail-info ul li p.comIntro {
+	display: inline-block;
+	width: 70%;
+	height: 120px;
+	overflow-y: auto;
+	vertical-align: top;
+}
+
+div.detail-info>table a {
+	display: inline-block;
+	position: relative;
+}
+
+div.detail-info>table a div.info-content:before {
+	content: url("../img/caret-up.png");
+	display: block;
+	position: absolute;
+	top: -14px;
+	left: 150px;
+}
+
+div.detail-info>table a div.info-content {
+	position: absolute;
+	left: -40px;
+	top: 30px;
+	z-index: 10;
+	width: 300px;
+	overflow-y: auto;
+	padding: 10px;
+	color: #000;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+/*运营方反馈管理*/
+#feedBack .fixed-table-body {
+	overflow: inherit;
+}
+
+#feedBack .note-details {
+	display: inline-block;
+	position: relative;
+	width: 200px;
+}
+
+#feedBack .note-details .show-note:before {
+	content: url(../img/caret-up.png);
+	display: block;
+	position: absolute;
+	top: -14px;
+	left: 150px;
+}
+
+#feedBack .note-details .show-note {
+	display: none;
+	position: absolute;
+	z-index: 10;
+	top: 24px;
+	left: -60px;
+	width: 320px;
+	padding: 6px 10px;
+	background: #fff;
+	border: 1px solid rgba(24, 30, 0, 0.25);
+	box-shadow: 0 0 2px rgba(133, 130, 129, 0.76);
+	color: #000;
+}
+
+/*问题建议*/
+#questionFeed {
+	width: 600px;
+	margin: 20px auto;
+}
+
+#questionFeed input {
+	width: 160px;
+}
+
+#questionFeed .questLabel {
+	vertical-align: top;
+	margin-left: -16px;
+}
+
+#questionFeed textarea {
+	width: 420px;
+	height: 110px;
+	resize: none;
+	padding: 6px 10px;
+}
+
+/*承运方、发货方首页*/
+div.announ-info-box {
+	width: 40%;
+	float: left;
+}
+
+div.announ-info-box>div.widget-content ul li {
+	clear: both;
+	height: 36px;
+	line-height: 36px;
+	margin: 6px 20px 0 20px;
+}
+
+div.announ-info-box>div.widget-content ul li a {
+	float: left;
+	width: 444px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: #000;
+}
+
+div.announ-info-box>div.widget-content ul li a:hover {
+	color: #f60;
+	text-decoration: underline;
+}
+
+div.announ-info-box>div.widget-content ul li em {
+	float: right;
+	color: #f64d11;
+	font-style: normal;
+}
+
+div.announ-info-box>div.widget-content ul li:last-child a:hover {
+	color: #205ddd;
+}
+
+div.announ-info-box>div.widget-content .pos_more {
+	position: absolute;
+	bottom: 20px;
+	right: 30px;
+}
+
+div.schedule-box {
+	clear: both;
+	display: inline-block;
+	width: 55%;
+}
+
+div.schedule-box>div.widget-content ul {
+	display: -ms-flexbox;
+	display: flex;
+	display: -webkit-flex;
+	display-decoration: column;
+	-ms-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+
+div.schedule-box>div.widget-content ul li {
+	width: 44%;
+	height: 70px;
+	margin: 9.5px 20px;
+	padding: 10px;
+	background: #ccc;
+	display: inline-block;
+}
+
+div.schedule-box>div.widget-content ul li small {
+	letter-spacing: 2px;
+}
+
+div.schedule-box>div.widget-content ul li strong,div.schedule-box>div.widget-content ul li small
+	{
+	color: #f4f3f9;
+	display: block;
+	height: 26px;
+	line-height: 26px;
+	text-align: center;
+}
+
+div.schedule-box>div.widget-content ul li strong {
+	font-size: 18px;
+}
+
+div.schedule-box>div.widget-content ul li strong a {
+	color: #f4f3f9;
+}
+
+div.schedule-box>div.widget-content ul li strong em {
+	color: #f00;
+	font-style: normal;
+}
+
+div.schedule-box>div.widget-content ul li:nth-of-type(odd) {
+	background-color: #7266ba;
+}
+
+div.schedule-box>div.widget-content ul li:nth-of-type(even) {
+	background-color: #008B8B;
+}
+
+div.schedule-box>div.widget-content ul li:nth-of-type(3n+3) {
+	background-color: #8B3A62;
+}
+
+div.schedule-box>div.widget-content ul li:nth-of-type(3n+4) {
+	background-color: #EE9A00;
+}
+
+div.schedule-box>div.widget-content ul li:nth-of-type(3n+5) {
+	background-color: #3CB371;
+}
+
+div.schedule-box>div.widget-content ul li:nth-of-type(3n+6) {
+	background-color: #4F94CD;
+}
+
+div.function-box {
+	width: 97%;
+	height: auto !important;
+}
+
+div.function-box>.widget-content>ul li.func-item,div.function-box>.widget-content>ul li.func-first-item
+	{
+	display: inline-block;
+	margin: 16px 0 16px 20px;
+	text-align: center;
+}
+
+div.function-box>.widget-content>ul li.func-item a.icon-box,div.function-box>.widget-content>ul li.func-first-item a.icon-box
+	{
+	display: block;
+	width: 120px;
+	height: 120px;
+	line-height: 120px;
+	text-align: center;
+	color: #a29f9f;
+	font-size: 32px;
+	margin-bottom: 5px;
+	border-radius: 100%;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	outline: none;
+	background: rgba(184, 188, 186, 0.46);
+}
+
+div.function-box>.widget-content>ul li.func-item span,div.function-box>.widget-content>ul li.func-first-item span
+	{
+	display: inline-block;
+}
+
+div.function-box>.widget-content>ul li.func-first-item:hover>a.icon-box
+	{
+	color: #fff;
+	background-color: #9370DB;
+	outline: none;
+}
+
+div.function-box>.widget-content>ul li.func-item {
+	position: relative;
+}
+
+div.function-box>.widget-content>ul li.func-item:hover a.icon-box {
+	color: #fff;
+	background-color: #9370DB;
+	outline: none;
+}
+
+div.function-box>.widget-content>ul li.func-item:hover i.fa-times {
+	visibility: visible;
+}
+
+div.function-box>.widget-content>ul li.func-item a.icon-box i.icon-item
+	{
+	width: 32px;
+	height: 32px;
+}
+
+div.function-box>.widget-content>ul li.func-item a.icon-box i.icon-item img
+	{
+	width: 100%;
+}
+
+div.function-box>.widget-content>ul li.func-item i.fa-times {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #ff0d0d;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 10;
+	font-size: 18px;
+	color: #fff;
+	visibility: hidden;
+	cursor: pointer;
+}
+
+/*公告列表页*/
+div.announ-list-box>div.widget-content {
+	width: 80%;
+	margin: 20px auto;
+}
+
+div.announ-list-box>div.widget-content>ul.info-tab-box li {
+	height: 28px;
+	line-height: 28px;
+	padding: 0 16px;
+	display: inline-block;
+	border: 1px solid #ddd;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+div.announ-list-box>div.widget-content>ul.info-tab-box li a {
+	color: #000;
+	outline: none;
+}
+
+div.announ-list-box>div.widget-content>ul.info-tab-box li.active {
+	background-color: #f64d11;
+}
+
+div.announ-list-box>div.widget-content>ul.info-tab-box li.active a {
+	color: #fff;
+}
+
+div.announ-list-box>div.widget-content>div.tab-content {
+	margin: 20px;
+}
+
+div.announ-list-box>div.widget-content>div.tab-content ul li {
+	clear: both;
+	height: 36px;
+	line-height: 36px;
+	display: block;
+	width: 100%;
+}
+
+div.announ-list-box>div.widget-content>div.tab-content ul li a {
+	width: 90%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: #090909;
+	outline: none;
+}
+
+div.announ-list-box>div.widget-content>div.tab-content ul li a:hover {
+	color: #f64d11;
+	text-decoration: underline;
+}
+
+.announ-info-box {
+	position: relative;
+}
+
+div.announ-list-box>div.widget-content>div.tab-content ul li em {
+	margin-right: 40px;
+	font-style: normal;
+	color: #f64d11;
+}
+
+div.announ-list-box>div.widget-content>div.page-box {
+	clear: both;
+	width: 40%;
+	margin: 20px auto;
+}
+
+@media ( max-width : 1763px) {
+	div.announ-info-box>div.widget-content ul li a {
+		width: 420px;
+	}
+}
+
+@media ( max-width : 1724px) {
+	div.announ-info-box>div.widget-content ul li a {
+		width: 410px;
+	}
+}
+
+@media ( max-width : 1676px) {
+	#content-wrapper {
+		width: 83%;
+	}
+	div.announ-info-box {
+		width: 54%;
+	}
+	div.announ-info-box>div.widget-content ul li a {
+		width: 430px;
+	}
+	div.schedule-box {
+		width: 40%;
+	}
+	div.schedule-box>div.widget-content ul li {
+		width: 39%;
+	}
+	/*公告详情页*/
+	div.announ-list-box>div.widget-content>div.tab-content {
+		margin: 20px;
+	}
+	div.announ-list-box>div.widget-content>div.tab-content ul li a {
+		width: 80%;
+	}
+}
+
+@media ( max-width : 1355px) {
+	div.announ-info-box {
+		width: 54%;
+	}
+	div.announ-info-box>div.widget-content ul li a {
+		width: 400px;
+	}
+}
+
+/*选择常用功能模态框*/
+#selectFunction .modal-dialog {
+	width: 60%;
+	min-width: 690px;
+}
+
+#selectFunction .modal-body h5 {
+	border-left: 4px solid #b673d2;
+	padding-left: 4px;
+}
+
+#selectFunction .modal-body>div.addFun-top-box {
+	height: 200px;
+	overflow-y: auto;
+	border-bottom: 1px dashed #ccc;
+}
+
+#selectFunction .modal-body div.input-group {
+	display: inline-table;
+	width: 20%;
+	height: 32px;
+	margin: 0 10px 10px;
+}
+
+#selectFunction .modal-body div.input-group:hover input {
+	border: 1px solid #4682b4;
+}
+
+#selectFunction .modal-body div.input-group:hover span {
+	border: 1px solid #4682b4;
+	border-left: none;
+	color: #4682b4;
+	cursor: pointer;
+}
+
+#selectFunction .modal-body div.input-group>input {
+	outline: none;
+	transition: none;
+}
+
+#selectFunction .modal-body div.input-group>input:focus {
+	border: 1px solid #4682B4;
+}
+
+#selectFunction .modal-body div.input-group>span {
+	font-size: 20px;
+}
+
+#selectFunction .modal-body>div.addFun-bottom-box {
+	height: 300px;
+	overflow-y: auto;
+}
+
+#selectFunction .modal-body>div.addFun-bottom-box ul.tab-box li {
+	display: inline-block;
+	height: 26px;
+	line-height: 26px;
+	padding: 0 10px;
+	background-color: #ccc;
+}
+
+#selectFunction .modal-body>div.addFun-bottom-box ul.tab-box li a {
+	color: #999;
+}
+
+#selectFunction .modal-body>div.addFun-bottom-box ul.tab-box li:hover,#selectFunction .modal-body>div.addFun-bottom-box ul.tab-box li.active
+	{
+	background-color: #8B7765;
+}
+
+#selectFunction .modal-body>div.addFun-bottom-box ul.tab-box li:hover a,#selectFunction .modal-body>div.addFun-bottom-box ul.tab-box li.active a
+	{
+	color: #fff;
+	outline: none;
+}
+
+#selectFunction .modal-body>div.addFun-bottom-box>div.tab-content {
+	margin-top: 20px;
+}
+
+#selectFunction .modal-footer {
+	text-align: center;
+	border-top: none;
+}
+
+#detailComInfo .modal-dialog {
+	width: 50%;
+}
+
+#detailNetInfo .modal-dialog {
+	width: 600px;
+}
+
+#detailNetInfo em.deliveryFlag {
+	background: url("../img/img_d.png") no-repeat;
+	background-size: 40% 104%;
+	padding-left: 30px;
+	margin-left: 0;
+	margin-right: 10px;
+}
+
+#detailNetInfo em.pickUpFlag {
+	background: url("../img/img_t.png") no-repeat;
+	background-size: 37% 100%;
+	padding-left: 30px;
+	margin-left: 0;
+}
+
+/*模态框基本信息*/
+.modal .modal-dialog {
+	width: 70%;
+}
+
+.modal .modal-header {
+	background: rgba(187, 187, 139, 0.84);
+	color: #fff;
+}
+
+/*tooltip样式*/
+.tooltip.top .tooltip-arrow {
+	border-top-color: #d39642 !important;
+}
+
+.tooltip-inner {
+	background-color: #ffffcc !important;
+	color: #000;
+	padding: 4px 6px;
+	border: 1px solid #ce969f;
+	font-family: "微软雅黑";
+	max-width: 220px;
+}
+
+/*ueditor样式*/
+.edui-default {
+	position: relative;
+	z-index: 0;
+}
+
+/*bootstrap-table的表头样式*/
+.bootstrap-table .fixed-table-container .fixed-table-body th,.table th {
+	font-size: 15px;
+	background: #dff0d8;
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* 弹出框 */
+.bootbox .modal-dialog {
+	width: 30%;
+	min-width: 400px;
+	position: absolute;
+	top: 35%;
+	left: 35%;
+}
+/*日期插件*/
+.datetimepicker table {
+	font-size: 13px;
+}
+
+.datetimepicker table th.prev i.glyphicon,.datetimepicker table th.next i.glyphicon
+	{
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.datetimepicker table th.prev i:before {
+	content: "\f060";
+}
+
+.datetimepicker table th.next i:before {
+	content: "\f061";
+}
+
+.datetimepicker table td {
+	line-height: 16px;
+	height: 16px;
+}
+
+.datetimepicker table span {
+	line-height: 26px !important;
+	height: 26px !important;
+}
+/*loading延迟加载效果*/
+div.loading {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1040;
+	background: rgba(52, 54, 59, 0.4);
+	text-align: center;
+}
+
+div.loading img,div.loading p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -50px;
+}
+
+div.loading p {
+	margin-top: 50px;
+	margin-left: -40px;
+	color: #fff;
+	font-size: 16px;
+}
+/*bootstrap table表头文字居中*/
+.fixed-table-container thead th .th-inner,.fixed-table-container tbody td .th-inner,.bootstrap-table .fixed-table-container .fixed-table-body th,.table th
+	{
+	text-align: center !important;
+}
+/* 字典管理 */
+.labelContent .label-align {
+	vertical-align: top;
+}
+
+#editDictionary .labelContent {
+	position: relative;
+	display: block;
+	line-height: 36px;
+	margin-bottom: 10px;
+}
+
+#editDictionary .modal-dialog {
+	width: 50% !important;
+	min-width: 700px;
+}
+
+#save-form .modal-body {
+	width: 700px;
+	margin: 0 auto;
+}
+
+#save-form .modal-body .info-box .labelContent {
+	display: inline-block;
+}
+
+#save-form .modal-body .labelContent input[type="text"] {
+	width: 160px !important;
+}
+
+#save-form .modal-body .info-box .labelContent:last-child {
+	margin-left: 40px;
+}
+
+#save-form .modal-body .info-box .labelContent {
+	display: inline-block;
+}
+
+#save-form .labelContent .label-align+textarea {
+	width: 450px;
+	height: 110px;
+	resize: none;
+	padding: 6px 10px;
+	line-height: 18px;
+	border-radius: 4px;
+	border: solid 1px #ccc;
+	background: #fff;
+}
+/* 模态框图片放大 */
+#bigImage .modal-dialog {
+	min-width: 400px;
+	width: 70%;
+}
+
+.modal-dialog .image_container {
+	width: 80%;
+	height: 400px;
+	margin: 40px auto;
+}
+
+.modal-dialog .image_container img {
+	width: 100%;
+	height: 100%;
+}

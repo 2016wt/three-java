@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sirius.mybatis.mapper.UserMapper">
+
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into user(avatar,phone,password,token,type,buyer_id)
+		values(#{avatar},#{phone},#{password},#{token},#{type},#{buyerId})
+	</insert>
+
+	<update id="changeInfo">
+		update shopkeeper
+		<set>
+			<if test="userName!=null">
+				user_name = #{userName},
+			</if>
+			<if test="avatar!=null">
+				avatar = #{avatar},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+
+	<select id="data" resultType="com.sirius.entity.User">
+		select * from user limit
+		#{offset},#{limit}
+	</select>
+
+	<select id="dataCount" resultType="java.lang.Integer">
+		select count(1) from
+		user
+	</select>
+</mapper>

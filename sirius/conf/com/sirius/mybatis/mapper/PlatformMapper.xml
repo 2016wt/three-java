@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sirius.mybatis.mapper.PlatformMapper">
+	
+	<!-- 店主列表 -->
+	<select id="shopkeeperList" resultType="com.sirius.entity.query.UserQuery" >
+		select user_name,`name`,phone,
+		(select province_code from user_shop where user_id=`user`.id) provinceCode,
+		(select city_code from user_shop where user_id=`user`.id) cityCode,
+		(select level_shop from user_shop where user_id=`user`.id) levelShop,
+		(select convention_time from user_shop where user_id=`user`.id) conventionTime 
+ 		from `user` where type=#{type} 
+ 		<!-- 用户名搜索 -->
+ 		<if test="userName !=null">
+ 			and user_name=#{userName}
+ 		</if>
+ 		<!-- 联系人搜索 -->
+ 		<if test="name !=null">
+ 			and `name`=#{name}
+ 		</if>
+ 		<!-- 联系电话搜索 -->
+ 		<if test="phone !=null">
+ 			and phone=#{phone}
+ 		</if>
+	</select>
+	<!-- 店主数量 -->
+	<select id="shopkeeperContent" resultType="java.lang.Integer">
+		select count(1) 
+		from `user` where type=#{type} 
+			<!-- 用户名搜索 -->
+ 		<if test="userName !=null">
+ 			and user_name=#{userName}
+ 		</if>
+ 		<!-- 联系人搜索 -->
+ 		<if test="name !=null">
+ 			and `name`=#{name}
+ 		</if>
+ 		<!-- 联系电话搜索 -->
+ 		<if test="phone !=null">
+ 			and phone=#{phone}
+ 		</if>
+	</select>
+
+	<!-- 新增实体店主的个人信息 -->
+	<insert id="insertShopkeeperContent" useGeneratedKeys="true" keyProperty="id">
+		insert into `user`(
+		user_name,`password`,token,`name`,phone,
+		position,qq,wechat,email,type)
+		values(#{userName},#{password},#{token},#{name},#{phone},
+		#{position},#{qq},#{wechat},#{email},#{type})
+	</insert>
+	<!-- 新增实体店铺的基本信息 -->
+	<insert id="insertShopkeeper">
+		insert into user_shop(user_id,shop_name,levle_shop`,salesman_id,
+		convention_time,province_code,city_code,area_code,
+		run_style,address,area) values(
+		#{userId},#{shopName},#{levelShop},#{salesmanId},#{conventionTime},
+		#{provinceCode},#{cityCode},#{areaCode},#{runStyle},#{address},
+		#{area})
+	</insert>
+	
+	<!-- 修改实体店主的信息 -->
+	<update id="updateShopkeeperContent">
+		update `user`  
+		<set>
+			<if test="userName !=null">
+				user_name=#{userName} ,
+			</if>
+			<if test="password !=null">
+				`password`=#{password} ,
+			</if>
+			<if test="name !=null">
+				`name`=#{name} ,
+			</if>
+			<if test="phone !=null">
+				phone =#{phone} ,
+			</if>
+			<if test="position !=null">
+				position =#{position} ,
+			</if>
+			<if test="qq !=null">
+				qq =#{qq},
+			</if>
+			<if test="wechat !=null">
+				wechat =#{wechat} ,
+			</if>
+			<if test="email !=null">
+				email =#{email} 
+			</if>
+		</set>
+		  where id=#{id}
+	</update>
+	<!-- 修改店铺的信息 -->
+	<update id="updateShopkeeper">
+		update user_shop  
+		<set>
+			<if test="shopName !=null">
+				shop_name =#{shopName},
+			</if>
+			<if test="levelShop !=null">
+				level_shop =#{levelShop},
+			</if>
+			<if test="salesmanId !=null">
+				salesman_id =#{salesmanId},
+			</if>
+			<if test="conventionTime !=null">
+				convention_time =#{conventionTime},
+			</if>
+			<if test="provinceCode !=null">
+				province_code =#{provinceCode},
+			</if>
+			<if test="cityCode !=null">
+				city_code =#{cityCode},
+			</if>
+			<if test="areaCode !=null">
+				area_code =#{areaCode},
+			</if>
+			<if test="address !=null">
+				address =#{address},
+			</if>
+			<if test="area !=null">
+				area =#{area},
+			</if>
+			<if test="runStyle !=null">
+				run_style =#{runStyle} 
+			</if>
+		</set>
+		where user_id=#{userId}
+	</update>
+	
+	<!-- 店主详情 -->
+	<select id="getshopkeeperContent" resultType="com.sirius.entity.query.UserQuery">
+		select * 
+		from `user` 
+		where user_name=#{userName}
+	</select>
+	<!-- 店铺详情 -->
+	<select id="getshopkeeper" resultType="com.sirius.entity.UserShop">
+		select * 
+		from user_shop 
+		where user_id=(select id 
+		from `user` 
+		where user_name=#{userName})
+	</select>
+	
+	
+	<!-- ************************************************ -->
+	<!-- 供应商列表 -->
+	<select id="wholesalerList" resultType="com.sirius.entity.query.UserQuery" >
+		select user_name,`name`,phone,
+		(select province_code from user_shop where user_id=`user`.id) provinceCode,
+		(select city_code from user_shop where user_id=`user`.id) cityCode,
+		(select level_shop from user_shop where user_id=`user`.id) levelShop,
+		(select convention_time from user_shop where user_id=`user`.id) conventionTime 
+ 		from `user` where type=#{type} 
+ 			<!-- 用户名搜索 -->
+ 		<if test="userName !=null">
+ 			and user_name=#{userName}
+ 		</if>
+ 		<!-- 联系人搜索 -->
+ 		<if test="name !=null">
+ 			and `name`=#{name}
+ 		</if>
+ 		<!-- 联系电话搜索 -->
+ 		<if test="phone !=null">
+ 			and phone=#{phone}
+ 		</if>
+	</select>
+	<!-- 供应商数量 -->
+	<select id="wholesalerContent" resultType="java.lang.Integer">
+		select count(1) 
+		from `user` where type=#{type} 
+			<!-- 用户名搜索 -->
+ 		<if test="userName !=null">
+ 			and user_name=#{userName}
+ 		</if>
+ 		<!-- 联系人搜索 -->
+ 		<if test="name !=null">
+ 			and `name`=#{name}
+ 		</if>
+ 		<!-- 联系电话搜索 -->
+ 		<if test="phone !=null">
+ 			and phone=#{phone}
+ 		</if>
+	</select>
+	
+	<!-- 新增供货商的个人信息 -->
+	<insert id="insertWholesalerContent" useGeneratedKeys="true" keyProperty="id">
+		insert into `user`(
+		user_name,`password`,token,`name`,phone,
+		position,qq,wechat,email,type)
+		values(#{userName},#{password},#{token},#{name},#{phone},
+		#{position},#{qq},#{wechat},#{email},#{type})
+	</insert>
+	<!-- 新增供货商店铺的基本信息 -->
+	<insert id="insertWholesaler">
+		insert into user_shop(user_id,shop_name,level_shop,salesman_id,
+		convention_time,province_code,city_code,area_code,
+		run_style,address,area) values(
+		#{userId},#{shopName},#{levelShop},#{salesmanId},#{conventionTime},
+		#{provinceCode},#{cityCode},#{areaCode},#{runStyle},#{address},
+		#{area})
+	</insert>
+	
+	<!-- 修改供货商的信息 -->
+	<update id="updateWholesalerContent">
+		update `user`  
+		<set>
+			<if test="userName !=null">
+				user_name=#{userName} ,
+			</if>
+			<if test="password !=null">
+				`password`=#{password} ,
+			</if>
+			<if test="name !=null">
+				`name`=#{name} ,
+			</if>
+			<if test="phone !=null">
+				phone =#{phone} ,
+			</if>
+			<if test="position !=null">
+				position =#{position} ,
+			</if>
+			<if test="qq !=null">
+				qq =#{qq},
+			</if>
+			<if test="wechat !=null">
+				wechat =#{wechat} ,
+			</if>
+			<if test="email !=null">
+				email =#{email} 
+			</if>
+		</set>
+		  where id=#{id}
+	</update>
+	<!-- 修改供货商店铺的信息 -->
+	<update id="updateWholesaler">
+		update user_shop  
+		<set>
+			<if test="shopName !=null">
+				shop_name =#{shopName},
+			</if>
+			<if test="levelShop !=null">
+				level_shop =#{levelShop},
+			</if>
+			<if test="salesmanId !=null">
+				salesman_id =#{salesmanId},
+			</if>
+			<if test="conventionTime !=null">
+				convention_time =#{conventionTime},
+			</if>
+			<if test="provinceCode !=null">
+				province_code =#{provinceCode},
+			</if>
+			<if test="cityCode !=null">
+				city_code =#{cityCode},
+			</if>
+			<if test="areaCode !=null">
+				area_code =#{areaCode},
+			</if>
+			<if test="address !=null">
+				address =#{address},
+			</if>
+			<if test="area !=null">
+				area =#{area},
+			</if>
+			<if test="runStyle !=null">
+				run_style =#{runStyle} 
+			</if>
+		</set>
+		where user_id=#{userId}
+	</update>
+	
+	<!-- 供货商详情 -->
+	<select id="getwholesalerContent" resultType="com.sirius.entity.query.UserQuery">
+		select * 
+		from `user` 
+		where phone=#{phone}
+	</select>
+	<!-- 供货商店铺详情 -->
+	<select id="getwholesaler" resultType="com.sirius.entity.UserShop">
+		select * 
+		from user_shop 
+		where user_id=(select id 
+		from `user` 
+		where phone=#{phone})
+	</select>
+	<!--*****************************************************************  -->
+	<!-- 会员顾客列表 -->
+	<select id="customerList" resultType="com.sirius.entity.query.UserQuery" >
+		select token,
+		(select province_code from user_shop where user_id=`user`.id) provinceCode,
+		(select city_code from user_shop where user_id=`user`.id) cityCode,
+		(select level_customer from user_detailed where user_id=`user`.id) levelCustomer,
+		phone,
+		(select shop_id from user_detailed where user_id=`user`.id) shopid,
+		(select add_time from user_detailed where user_id=`user`.id) addTime 
+ 		from `user` where type=#{type} 
+ 		<!-- 客户id -->
+ 		<if test="token !=null">
+ 			and token=#{token} 
+ 		</if>
+ 		<!-- 联系电话 -->
+ 		<if test="phone !=null">
+ 			and phone=#{phone}  
+ 		</if>
+ 		<!-- 门店 -->
+	</select>
+	<!-- 会员顾客数量 -->
+	<select id="customerCount" resultType="java.lang.Integer">
+		select  
+		count(1) 
+ 		from `user` where type=#{type} 
+ 		<!-- 客户id -->
+ 		<if test="token !=null">
+ 			and token=#{token}  
+ 		</if>
+ 		<!-- 联系电话 -->
+ 		<if test="phone !=null">
+ 			and phone=#{phone}  
+ 		</if>
+	</select>
+	<!-- 会员管理的详情 -->
+	<select id="customerContent" resultType="com.sirius.entity.query.UserQuery">
+		select user_name,`password`,`name`,phone,
+ 		qq,wechat,email,
+ 		(select age from user_detailed where user_id=`user`.id) age ,
+ 		(select sex from user_detailed where user_id=`user`.id) sex ,
+ 		(select province_code from user_detailed where user_id=`user`.id) provinceCode ,
+ 		(select city_code from user_detailed where user_id=`user`.id) cityCode ,
+ 		(select add_time from user_detailed where user_id=`user`.id) addTime,
+ 		(select shop_id from user_detailed where user_id=`user`.id) shopid ,
+ 		(select address from user_detailed where user_id=`user`.id) address  ,
+ 		(select level_customer from user_detailed where user_id=`user`.id) lev  
+		from `user` 
+		where type=#{type} and id=#{id}
+	</select>
+	<!-- *********************************************************** -->
+	<!-- 买手列表 -->
+	<select id="buyPeopleList" resultType="com.sirius.entity.query.UserQuery">
+		select user_name,
+		(select province_code from user_shop where user_id=`user`.id) provinceCode,
+		(select city_code from user_shop where user_id=`user`.id) cityCode,
+		`name`,
+		phone,
+		(select number from user_detailed where user_id=`user`.id) number,
+		(select add_time from user_detailed where user_id=`user`.id) addTime 
+ 		from `user` where type=#{type} 
+ 	
+ 		
+ 		<!-- 身份证搜索 -->
+ 		<if test="number !=null">
+ 			and id= (select user_id from user_detailed where number=#{number})
+ 		</if>
+	</select>
+	<select id="buyPeopleCount" resultType="java.lang.Integer">
+		select 
+		count(1) 
+		from `user` where type=#{type} 
+		
+ 		<!-- 身份证搜索 -->
+ 		<if test="number !=null">
+ 			and id= (select user_id from user_detailed where number=#{number})
+ 		</if>
+	</select>
+	<!-- 新增买手 -->
+	<insert id="insertBuyPeople" flushCache="true" keyProperty="id">
+		insert into `user`(user_name,`password`,`name`,phone,token,type,qq,wechat)
+		values(#{userName},#{password},#{name},#{phone},#{token},#{type},#{qq},#{wechat})
+	</insert>
+	<!-- 新增买手的详细信息 -->
+	<insert id="insertBuyPeopleContent">
+		insert into user_detailed(level_customer,`work`,number,sex,age,marry,
+		native_province,native_city,native_area,property,speciality,
+		constellation,province_code,city_code,area_code,
+		style,address,shop_province,shop_city,shop_area) 
+		values(#{levelCustomer},#{work},#{number},#{sex},#{age},
+		#{marry},#{nativeProvince},#{nativeCity},#{nativeArea},#{property},
+		#{speciality},#{constellation},#{provinceCode},#{cityCode},#{areaCode},
+		#{style},#{address},#{shopProvince},#{shopCity},#{shopArea})
+	</insert>
+</mapper>

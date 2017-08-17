@@ -1,0 +1,1776 @@
+s@charset "UTF-8";
+
+/*
+* @Author: zhaolili
+* @Date:   2016-09-05 11:04:48
+* @Last Modified by:   anchen
+* @Last Modified time: 2016-09-10 17:15:50
+*/
+
+html,
+body {
+	font-family: 'Open Sans', 'Microsoft YaHei', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	background:#e7ebee;
+	min-width: 1320px;
+	padding-right:0 !important;
+	overflow-y:auto;
+}
+
+
+
+/*页面整体内容*/
+#page-wrapper {
+    width: auto;
+    margin-top: 50px;
+    background-color: #e7ebee;
+    padding-bottom: 20px;
+}
+/*页面左侧*/
+.nav .active{
+	text-align:center;
+}
+.nav .active a:hover{
+	color:#fff;
+}
+/*页面右侧内容*/
+#content-wrapper{
+    height: 100%;
+    position: relative;
+    width: 88%;
+    float: right;
+    padding-top: 1px;
+    margin-bottom: 20px;
+
+}
+
+@media (max-width: 1850px) {
+    #content-wrapper {
+        width: 86%;
+    }
+}
+
+@media (max-width: 1676px) {
+    #content-wrapper {
+        width: 83%;
+    }
+}
+
+#content-wrapper> .widget-box {
+	background: none repeat scroll 0 0 #F9F9F9;
+	border: 1px solid #cdcdcd;
+	clear: both;
+	margin: 16px;
+	margin-bottom:0;
+	position: relative;
+	border-radius: 4px;
+	height:100%;
+}
+.widget-box input{
+		border-color:#00868B;
+		color:#00868B;
+}
+.widget-box .label_name input{
+	width:1020px;
+}
+.widget-box .label_name .label-w{
+	height:70px;
+}
+.widget-box label{
+	float:left;
+	text-align:left;
+	margin-left:10px;
+}
+.widget-box .label-right{
+	float:right;
+	overflow:hidden;
+	margin-right:80px;
+}
+.widget-box .label-left{
+	float:left;
+	overflow:hidden;
+}
+.widget-box h5{
+	color:#00868B;
+}
+#content-wrapper> .widget-box> .widget-title {
+	border-bottom: 1px solid #d5d5d5;
+	background-image: -webkit-linear-gradient(top, #fdfdfd 0%, #9fa1aa 100%);
+   	background-image: -ms-linear-gradient(top, #fdfdfd 0%, #9fa1aa 100%);
+    background-image: -moz-linear-gradient(top, #fdfdfd 0%, #9fa1aa 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#fdfdfd, endColorstr=#9fa1aa);
+}
+
+#content-wrapper> .widget-box> .widget-title span,
+#content-wrapper> .widget-box> .widget-title h5 {
+	display: inline-block;
+}
+
+#content-wrapper> .widget-box> .widget-title> span.icon {
+	border-right: 1px solid #cdcdcd;
+	padding: 9px 10px 7px 11px;
+	opacity: 0.7;
+	color: #0b6e7a;
+}
+
+#content-wrapper> .widget-box> .widget-title> h5 {
+	color: #040644;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 12px;
+	margin: 0;
+}
+
+ .widget-content {
+	padding: 12px 15px;
+	background-color: #fff;
+}
+/* .orderRelease-container{
+	height:900px !important;
+}
+.orderRelease-container .widget-box{
+	height:auto !important;
+} */
+.widget-content> fieldset {
+	padding: 10px 10px 20px 20px;
+	margin-top: 20px;
+	border-radius: 6px;
+	border: 1px solid #CDC9C9;
+}
+.goods-title input{
+ 	width:853px;
+ }
+/*goods底部*/
+.specification{
+	margin-bottom:5px;
+}
+.specification span,.specification select,.specification input{
+	margin:0 10px;
+	width:80px;
+}
+.specification input{
+	background-color:
+}
+
+/*当前选择的承运商*/
+fieldset.selectedforwarder label,
+fieldset.selectedforwarder dt{
+	font-weight:normal;
+	/* letter-spacing:2px; */
+}
+fieldset.selectedforwarder label{
+	font-size:16px;
+	font-weight:bold;
+	background:url(../img/company_icon.png) right top no-repeat;
+	padding-right:22px;
+}
+fieldset.selectedforwarder span{
+	color:#999;
+}
+fieldset.selectedforwarder dd{
+	min-width:260px;
+}
+fieldset.selectedforwarder em.pickUpGoods,
+fieldset.selectedforwarder em.homeDelivery{
+	padding-left:20px;
+	display:inline-block;
+	width:100px;
+	margin-left:0;
+}
+fieldset.selectedforwarder em.pickUpGoods{
+	background:url(../img/img_t.png) no-repeat;
+ 	background-size:contain;
+	margin-right:10px;
+}
+fieldset.selectedforwarder em.homeDelivery{
+	background:url(../img/img_d.png) no-repeat;
+	background-size:contain;
+}
+fieldset.selectedforwarder dd>em{
+	margin-left:9px;
+}
+.widget-content> fieldset> legend {
+	width: auto;
+	line-height: 36px;
+	padding: 4px 10px;
+	border-radius: 6px;
+	margin-bottom: 10px;
+	background-color: #fdcc01;
+	color: #fff;
+	font-size: 14px;
+}
+.widget-content> fieldset .receiver{
+	cursor:pointer;
+}
+ .widget-content fieldset .lebelContent {
+	display: inline-block;
+	line-height: 36px;
+	margin-right: 10px;
+	min-width: 236px;
+}
+
+ .widget-content fieldset .lebelContent label {
+	height: 36px;
+	line-height: 36px;
+	letter-spacing: 1px;
+	min-width: 75px;
+	/*text-align: justify;
+	text-align-last: justify;*/
+	text-align: right;
+}
+ .widget-content fieldset .lebelContent label.reqItem:before{
+      content:"*";
+      color:red;
+}
+ .widget-content fieldset .lebelContent .unit{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: solid 1px red;
+}
+ .widget-content fieldset.goodsInfo  div.pull-right  span.num{
+	display: inline-block;
+	width:110px;
+	text-align: center;
+    color: red;
+    border-bottom: solid 1px #C58D8D;
+     }
+ .widget-content fieldset .lebelContent input[type="text"],
+ .widget-content fieldset .lebelContent input[type="date"],
+ .widget-content fieldset .lebelContent input[type="number"] {
+	height: 30px;
+	line-height: 30px;
+	padding-left: 6px;
+	border: 1px solid #ccc;
+	width: 140px;
+}
+fieldset .lebelContent #limitDate,
+fieldset .lebelContent #limitDate1{
+    width:150px;
+ }
+ .widget-content fieldset .lebelContent select{
+	height: 30px;
+	line-height: 30px;
+	padding-left: 6px;
+	border: 1px solid #ccc;
+	width: 110px;
+}
+ .widget-content fieldset .mainInfo {
+	display: block;
+}
+
+.widget-content fieldset {
+	padding: .35em .625em .75em;
+	border: 1px solid #F0D2D2;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+.widget-content .form-group{
+	margin-bottom:0;
+}
+.widget-content fieldset legend {
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.42857143;
+	white-space: nowrap;
+	padding: 6px 12px;
+	width: auto;
+	border-bottom: 0;
+	margin-bottom: 10px;
+	background: #6197AB;
+	color: #fff;
+	letter-spacing:2px;
+}
+
+.widget-content .fa-map-marker:before {
+	display: inline-block;
+	font-size: 20px;
+	color: red;
+    position: absolute;
+    margin: -15px -20px;
+}
+.list_pos{
+	position:relative;
+}
+.div_customer{
+	height:300px;
+	overflow:auto;
+	display:none;
+	position:absolute;
+	left:0;
+	z-index:100;
+	box-shadow:0 0 10px #ccc;
+	width:470px;
+	background:#fff;
+}
+.about_customer tr td:nth-child(1){
+	width:200px;
+	word-break:break-all;
+}
+.about_customer tr td:nth-child(2){
+	width:120px;
+	word-break:break-all;
+}
+.about_customer{
+	
+}
+.about_customer tr:nth-child(1){
+	background-color: rgba(51, 122, 183, 0.23);
+}
+.detailAddress,.bigAddress{
+	width: 260px!important;
+	margin-top: 15px;
+	position: relative;
+}
+.bigAddress{
+	width: 232px!important;
+}
+.widget-content  fieldset .lebelContent  .labelText{
+    text-align: left;
+    margin-left: -5px;
+    min-width: 15px;
+}
+.widget-content fieldset .dAddress{
+	position: relative;
+}
+.widget-content fieldset .detailAddress {
+	margin-left: 5px;
+	text-indent: 10px;
+}
+.widget-content fieldset .alertBox{
+	position: absolute;
+	width: 400px;
+	height: auto;
+	padding: 10px;
+	border: solid 1px red;
+	left: 80px;
+	top: 47px;
+}
+.widget-content .goodsInfo  input[type="text"],
+.widget-content .goodsInfo  input[type="date"],
+.widget-content .goodsInfo  input[type="number"]{
+	width: 100px!important;
+}
+.widget-content  fieldset.goodsInfo .long_ipt,.widget-content  .long_ipt{
+	  width: 156px!important;
+}
+.widget-content fieldset .dpt{
+	min-width: 120px!important;
+}
+.widget-content fieldset #address{
+	margin:-2px 0 7px;
+	position:relative;
+}
+.widget-content fieldset #address .city-select-content{
+	left:-10px;
+	bottom:35px;
+}
+.widget-content fieldset .dpt input[type=checkbox]{
+	margin-left:9px;
+}
+.takeAddress label{
+	text-align: left!important;
+	margin:0 3px 0 10px;
+}
+.takeAddress .bigaddress{
+	margin-left: -13px!important;
+}
+.widget-content fieldset .dpt label{
+	width: auto!important;
+	text-align:left;
+}
+.widget-content fieldset div.lebelContent.mainInfo.dpt.takeAddress input{
+	margin-top: 0!important;
+}
+.widget-content fieldset div.lebelContent.mainInfo.dpt.takeAddress input.bigAddress{
+	margin-left:-12px;
+}
+#address{
+	display:none;
+}
+.widget-content fieldset textarea {
+	width: 500px;
+	height: 80px;
+	vertical-align: top;
+	resize: none;
+	margin-left: -12px;
+}
+
+.widget-content .publish {
+	padding: 10px 0;
+	background:#A8D20F;
+	color: white;
+	outline: 0;
+	border: 0;
+	margin:10px;
+	border-radius: 6px;
+	width:140px;
+}
+.modal{
+	overflow:auto;
+	outline: none;
+}
+/*选择常用收货人 */
+#rcvrModal .modal-body .bootstrap-table .fixed-table-container{
+	height:350px!important;
+}
+#rcvrModal .modal-body .bootstrap-table .fixed-table-container .fixed-table-header > table > thead > tr th{
+	background:#dff0d8;
+}
+/*选择承运商*/
+#choose_arrier .modal-body form {
+	margin-bottom: 20px;
+}
+#choose_arrier .modal-body input{
+	border:solid 1px #ccc;
+	line-height:25px;
+}
+#choose_arrier .modal-body  select {
+	height: 25px;
+	min-width: 80px;
+	line-height: 25px;
+	border: 1px solid #ccc;
+}
+#choose_arrier .modal-body small{
+	display:inline-block;
+	margin-top:5px;
+	color:rgb(112, 121, 101);
+	font-weight:bold;
+}
+#choose_arrier .modal-body div.pull-right{
+	margin-top:-5px;
+}
+#choose_arrier .modal-body #onPassageDaysF,
+#choose_arrier .modal-body #onPassageDaysT{
+	width:40px;
+	text-align:center;
+}
+#choose_arrier .modal-body table tr:nth-of-type(odd) {
+	background-color: #eee;
+}
+
+#choose_arrier .modal-body table td {
+	vertical-align: bottom;
+}
+
+#choose_arrier .modal-body table span {
+	display: inline-block;
+	padding: 5px;
+	background: #b4c3b4;
+	color: #fff;
+}
+
+#choose_arrier .modal-body input[type="checkbox"] {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+}
+
+#choose_arrier .modal-body button {
+	min-width: 100px;
+}
+#choose_arrier .fixed-table-body{
+	height:300px;
+}
+.money{
+  margin-top: 15px;
+  border-top: dashed 1px #ccc;
+  padding-top: 10px;
+  border-bottom: dashed 1px #ccc;
+  padding-bottom: 10px;
+}
+
+/*我的订单*/
+
+.query-term> .nav-tabs> li> a {
+	color: #843edb;
+	outline: none;
+	border-radius: 4px;
+}
+
+.query-term> .nav-tabs> li> a:hover {
+	outline: none;
+	border-color: #ddd;
+	border-bottom: 0 none;
+	color: #7266ba;
+}
+
+.query-term> .nav-tabs> li.active> a {
+	color: #7266ba;
+}
+
+.query-term> .nav-tabs> li.active> a:hover {
+	color: #7266ba;
+	border-bottom: 0 none;
+}
+
+.query-term> .tab-content {
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-top: none;
+	border-bottom: none;
+}
+ .form-control{
+	display:inline-block;
+}
+
+.query-term .search-group {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.query-term .search-group label,
+.query-term .search-group input,
+.query-term .search-group select {
+	padding: 0 10px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.query-term .search-group label {
+	min-width: 80px;
+	background-color: #00868B;
+	color: #fff;
+}
+
+.query-term .search-group input,
+.query-term .search-group select {
+	border: 1px solid #ddd;
+	margin-left: -5px;
+	outline: none;
+	width: 140px;
+}
+.query-term .search-group input.longIpt{
+	width: 190px!important;
+}
+.query-term .search-group input.longerIpt{
+    width: 289px!important;
+}
+.query-term .search-group button {
+	margin-right: 10px;
+}
+
+.query-term .search-group button i {
+	margin-right: 4px;
+}
+
+.query-term .search-group button.moreItem {
+	border: none;
+	background-color: transparent;
+	outline: none;
+}
+
+.query-term .more-part {
+	/*margin-top: 20px;*/
+	line-height: 50px;
+}
+.query-term .more-part .search-group{
+	position:relative;
+}
+.query-term .search-group .alertInfo{
+       position: absolute;
+    width: 175px;
+    line-height: 20px;
+    display: inline-block;
+    left: 176px;
+    top: 38px;
+    color: red;
+    display: none;
+    font-size: 12px;
+}
+.widget-content table a{
+	cursor:pointer;
+}
+.mouseShow{
+	cursor:pointer;
+}
+.query-term .marBot{
+	margin-bottom: 20px;
+	line-height: 45px;
+}
+
+.query-term> .tab-content .more-part .search-group input{
+	width: 140px;
+}
+ .query-term .more-part .deAddress input,
+ .query-term .more-part .reAddress input{
+	width: 240px!important;
+}
+#orderRlsDtFrom,#orderRlsDtTo,#limitDateFrom,#limitDateTo,#createTimeFrom,#createTimeTo{
+	width:115px;
+}
+.query-term> .tab-content .more-part .dateControl input {
+	width: 130px;
+}
+.table_Search{
+	width: 100%;
+	overflow: auto;
+}
+.table_Search table{
+	width: 1600px;
+	max-width: 2000px;
+}
+ .bootstrap-table .fixed-table-container .fixed-table-body th,
+ .table th{
+	font-size:15px;
+	background:#dff0d8;
+    text-align:center;
+    vertical-align:middle;
+}
+ .bootstrap-table .fixed-table-container .fixed-table-body tr{
+    cursor:pointer;
+ }
+ .bootstrap-table .fixed-table-container .fixed-table-body td,
+ .table td{
+    font-size:15px;
+    text-align:center;
+    vertical-align:middle;
+    word-wrap:break-word;
+ }
+  .bootstrap-table .fixed-table-container .fixed-table-body tbody{
+    /* height:400px; */
+    overflow-y:scroll;
+ }
+ #vehicliInfoTable tr td:nth-child(1){
+    width:100px; 
+}
+ #vehicliInfoTable  tr td:nth-child(2){
+    width:120px; 
+}
+ #vehicliInfoTable  tr td:nth-child(3){
+    width:120px; 
+}
+ #vehicliInfoTable  tr td:nth-child(4){
+    width:100px; 
+}
+.modal-dialog {
+	width:70%;
+	min-width: 860px;
+}
+#orderModify .modal-dialog{
+	width: 85%;
+}
+
+.modal-dialog .modal-header {
+	background: rgba(187, 187, 139, 0.84);
+	color: #fff;
+}
+
+#myoffer .modal-body #tradeList tr:hover{
+	/* background:#fff; */
+}
+#myoffer .modal-body .fixed-table-container tbody td{
+	border-left:0;
+}
+/* #myoffer .modal-body #tradeList tr:nth-child(1){
+	background:#EBF2EA;
+} */
+
+#CYSmyorderModal > div > div.modal-content{
+	border-radius:0;
+}
+#CYSmyorderModal .modal-dialog{
+	height:800px;
+}
+#CYSmyorderModal .modal-header .btnMargin,
+#myorderModal .modal-header .btnMargin,
+#myWaybillmodal .modal-header .btnMargin,
+#mysubWaybillmodal .modal-header .btnMargin {
+	margin: 0 10px;
+}
+#CYSmyorderModal .modal-body.modal-main div.miscInfo a.reason,
+#myWaybillmodal .modal-body.modal-main div.miscInfo a.reason,
+#mysubWaybillmodal .modal-body.modal-main div.miscInfo a.reason
+ {
+	position: relative;
+	cursor:pointer;
+}
+#CYSmyorderModal .modal-body.modal-main div.miscInfo div.reason-content,
+#myWaybillmodal .modal-body.modal-main div.miscInfo div.reason-content,
+ #mysubWaybillmodal .modal-body.modal-main div.miscInfo div.reason-content{
+	background: #DABE95;
+	color: #fff;
+	width: 200px;
+	position: absolute;
+	padding: 2px;
+	left: -50px;
+	display: none;
+}
+#myorderModal div.modal-body div.miscInfo{
+	border-bottom:solid 1px #ccc;
+}
+/*取消原因*/
+#CYSmyorderModal  #yytext {
+	background: #DABE95;
+	color: #fff;
+	width: 200px;
+	position: absolute;
+	padding: 2px;
+	top:31px;
+	left:-10px;
+    text-align: center;
+	display:none;
+	z-index:100;
+}
+ #myorderModal #yytext{
+	background: #DABE95;
+	color: #fff;
+	width: 200px;
+	position: absolute;
+	padding: 2px;
+	top:44px;
+    text-align: center;
+	display:none;
+	z-index:100;
+}
+#CYSmyorderModal .resume{
+
+	border-top:0;
+	border-radius:5px;
+	margin-bottom:10px;
+}
+#CYSmyorderModal .btnresume{
+	width:100%;
+	line-height:40px;
+	padding:0 15px ;
+	vertical-align:middle;
+	font-size:16px;
+	border-radius:5px;
+	background:rgb(147, 147, 165);
+	color:#fff;
+}
+#myorderModal .modal-body .reHistory{
+	border:solid 1px #ccc;
+	height:150px;
+	margin-top:10px;
+	display:none;
+}
+#CYSmyorderModal .btnresume i{
+	line-height:40px;
+}
+#CYSmyorderModal table{
+	font-size:14px;
+	font-family:'微软雅黑';
+}
+#CYSmyorderModal table th{
+	background:#dff0d8;
+}
+#CYSmyorderModal .tableHide i.fa-long-arrow-up{
+	color:red;
+	font-size:16px;
+}
+#CYSmyorderModal .tableHide i.fa-long-arrow-down{
+	color:rgb(44, 202, 44);
+	font-size:16px;
+}
+#CYSmyorderModal .tableHide button{
+	margin-left:10px;
+	margin-bottom:10px;
+}
+#CYSmyorderModal .modal-main {
+	height: 400px;
+	overflow: auto;
+	/*margin-bottom: 240px;*/
+}
+ .aboutGoods{
+	line-height: 25px;
+}
+ .aboutGoods span{
+	margin: 0 1px;
+}
+#myWaybillmodal .aboutGoods span{
+	margin: 0 2px;
+}
+ /* .fontRed font {
+	color: red;
+} */
+.fontRed{
+	margin-bottom:5px;
+}
+#myoffer > div > div > div.modal-body > div.fontRed{
+    margin-top: 10px;
+    border-top: solid 1px #043c09;
+    padding-top: 10px
+}
+#myoffer > div > div > div.modal-body > div.fontRed > span{
+	min-width:40px;
+	display:inline-block;
+}
+  .fontRed span:last-child font, .aboutGoods .fontRed span:last-child em{
+     font-size:15px;
+     font-weight:bolder;
+     color:red;
+ }
+ #tradeList > tbody > tr{
+     position:relative;
+ }
+#myorderModal table,
+#CYSmyorderModal table,
+ #myWaybillmodal table,
+  #mysubWaybillmodal table{
+	/* margin-top: 20px; */
+}
+
+#CYSmyorderModal .miscInfo {
+	border-bottom: solid 1px #ccc;
+}
+
+ .miscInfo span:nth-of-type(4) {
+	color: red;
+}
+#myWaybillmodal .miscInfo span:nth-of-type(4){
+	color:#000;
+}
+/* #myWaybillmodal .miscInfo span:nth-of-type(7),
+#myWaybillmodal .miscInfo span:nth-of-type(8) {
+	color: red;
+} */
+#CYSmyorderModal .orderInfo,
+ #myWaybillmodal .orderInfo,
+ #mysubWaybillmodal .orderInfo{
+	margin-bottom: 10px;
+	/* border-bottom: 1px solid #ddd; */
+}
+ #mysubWaybillmodal .orderInfo{
+ 	border-bottom: 1px solid #ddd; 
+ }
+#myorderModal .orderInfo h5,
+#CYSmyorderModal .orderInfo h5,
+#myWaybillmodal .orderInfo h5,
+#mysubWaybillmodal .orderInfo h5,
+.orderSearch_cnt .orderInfo h5
+{
+	font-weight: bold;
+}
+
+#myorderModal .orderInfo ul,
+#CYSmyorderModal .orderInfo ul,
+#myWaybillmodal .orderInfo ul,
+#mysubWaybillmodal .orderInfo ul,
+.orderSearch_cnt .orderInfo ul
+ {
+	list-style: none;
+	margin-left: 80px;
+}
+
+#myorderModal .orderInfo ul li,
+#CYSmyorderModal .orderInfo ul li,
+#myWaybillmodal .orderInfo ul li,
+#mysubWaybillmodal .orderInfo ul li,
+.orderSearch_cnt .orderInfo ul li
+{
+	display: inline-block;
+	min-width: 265px;
+}
+#mysubWaybillmodal .orderInfo ul li,
+.orderSearch_cnt .orderInfo ul li{
+    min-width: 236px;
+    margin-right: 10px;
+}
+#mysubWaybillmodal .orderInfo ul li{
+	 min-width: 280px;
+}
+.orderSearch_cnt .orderInfo ul li{
+	min-width: 210px;
+}
+#myorderModal .aboutGoods ul li,
+#CYSmyorderModal .aboutGoods ul li,
+#myWaybillmodal .aboutGoods ul li,
+#mysubWaybillmodal .aboutGoods ul li{
+	min-width:160px;
+}
+#CYSmyorderModal .aboutGoods ul li + li{
+	margin-left:10px;
+}
+#myorderModal .aboutGoods div.pull-left,
+#CYSmyorderModal .aboutGoods div.pull-left,
+#myWaybillmodal .aboutGoods div.pull-left,
+#mysubWaybillmodal .aboutGoods div.pull-left,
+.orderSearch_cnt .aboutGoods div.pull-left{
+	margin-left:79px;
+    color:#4e8e4f;
+    font-weight: bold;
+}
+#myorderModal .aboutGoods p,
+#CYSmyorderModal .aboutGoods p,
+#myWaybillmodal .aboutGoods p,
+#mysubWaybillmodal .aboutGoods p,
+.orderSearch_cnt .aboutGoods div.pull-left{
+	margin-right:111px;
+}
+#myorderModal .aboutGoods p label,
+#CYSmyorderModal .aboutGoods p label,
+#myWaybillmodal .aboutGoods p label,
+#mysubWaybillmodal .aboutGoods p label,
+.orderSearch_cnt .aboutGoods p label{
+	font-weight:bold;
+}
+#myorderModal .aboutGoods p span,
+#CYSmyorderModal .aboutGoods p span,
+#myWaybillmodal .aboutGoods p span,
+#mysubWaybillmodal .aboutGoods p span,
+.orderSearch_cnt .aboutGoods p span{
+	width: 110px;
+    border-bottom: solid 1px red;
+    display: inline-block;
+    text-align: center;
+    color: red;
+}
+#myorderModal .orderInfo ul li span:nth-child(1),
+#CYSmyorderModal .orderInfo ul li span:nth-child(1),
+#myWaybillmodal .orderInfo ul li span:nth-child(1),
+#mysubWaybillmodal .orderInfo ul li span:nth-child(1),
+#myWaybillmodal .orderInfo ul li span:nth-child(1),
+#mysubWaybillmodal .orderInfo ul li span:nth-child(1){
+	min-width: 280px;
+	margin-right:10px;
+}
+#mysubWaybillmodal .orderInfo ul li span:nth-child(1),
+#CYSmyorderModal .orderInfo ul li span:nth-child(1),
+#myorderModal .orderInfo ul li span:nth-child(1){
+	margin-right:0;
+}
+#mysubWaybillmodal .orderInfo ul li span span,
+#CYSmyorderModal .orderInfo ul li span span,
+#myorderModal .orderInfo ul li span span{
+    margin-left:10px;
+}
+#myorderModal .orderInfo .customRemark,
+#CYSmyorderModal .orderInfo .customRemark,
+ #myWaybillmodal .orderInfo .customRemark,
+  #mysubWaybillmodal .orderInfo .customRemark {
+	margin-left: 30px;
+	line-height: 27px;
+}
+
+#myorderModal .modal-footer,
+#CYSmyorderModal .modal-footer,
+#myWaybillmodal .modal-footer,
+#mysubWaybillmodal .modal-footer{
+	border-top: none;
+	margin-top: -20px;
+}
+
+
+#myorderModal .modal-footer button {
+	margin-right: 10px;
+}
+
+#myorderModal .modal-footer button i {
+	margin-right: 4px;
+}
+.remark_info{
+	word-wrap: break-word;
+    display: inline-block;
+    width:650px;
+}
+.miscInfo span {
+	margin-right: 10px;
+	line-height: 36px;
+	display: inline-block;
+	min-width: 203px;
+}
+#shipper .miscInfo span{
+	min-width:120px;
+}
+#myorderModal .modal-body  .miscInfo span{
+	min-width:40px;
+	margin-right: 35px;
+}
+#myorderModal .modal-body  .miscInfo a{
+	line-height:36px;
+	cursor:pointer;
+}
+#myorderModal .modal-body  .miscInfo span span{
+	margin-left:7px;
+}
+#myorderModal  ul li img,
+#CYSmyorderModal  ul li img,
+#myWaybillmodal  ul li img,
+#mysubWaybillmodal  ul li img{
+	width:20px;
+	height:20px;
+	display:inline-block;
+}
+.quotInfo {
+	line-height: 36px;
+	background-color: #ccc;
+}
+
+.quotInfo i {
+	color: red;
+	margin-left:10px;
+}
+/*订单修改履历 */
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th
+{
+	vertical-align:middle;
+}
+table td,table th{
+	text-align:center;
+}
+#resumeModal table td,
+#resumeModal table th,
+#CYSresumeModal table td,
+#CYSresumeModal table th{
+	border:solid 1px #ccc;
+	text-align:center;
+	font-size:15px;
+}
+#resumeModal .table-striped>tbody>tr:nth-of-type(even),
+ #CYSresumeModal .table-striped>tbody>tr:nth-of-type(even){
+  background-color: #eee;
+}
+#resumeModal .table-striped>tbody>tr:nth-of-type(odd),
+#CYSresumeModal .table-striped>tbody>tr:nth-of-type(odd){
+	 background-color: #fff;
+}
+#resumeModal table th,
+#CYSresumeModal table th
+{
+	 background-color: #dff0d8;
+}
+/* 承运商订单新增 */
+#CYSmyorderModal .modal-body,
+#myWaybillmodal .modal-body,
+#mysubWaybillmodal .modal-body{
+	font-family:'微软雅黑';
+}
+#CYSmyorderModal .miscInfo,
+#myWaybillmodal .miscInfo,
+#mysubWaybillmodal .miscInfo{
+	border-bottom: solid 2px rgba(89, 113, 98, 0.25);
+	margin-top:10px;
+}
+#CYSmyorderModal .miscInfo{
+	margin-top:0;
+}
+#CYSmyorderModal .miscInfo span,
+#myWaybillmodal .miscInfo span,
+#mysubWaybillmodal .miscInfo span
+{
+	margin-right:10px;
+	min-width:75px;
+}
+#CYSmyorderModal .miscInfo span{
+	min-width:203px;
+	position:relative;
+}
+#myWaybillmodal .miscInfo span,
+#mysubWaybillmodal .miscInfo span{
+	min-width:50px;
+}
+.WaybillInfo h4,
+.Info_order,
+.Info_offer{
+	padding-left:15px;
+	line-height:40px;
+	background:rgb(147, 147, 165);
+	color:#fff;
+	font-size:16px;
+	border-radius:5px;
+}
+.WaybillInfo ul li{
+	min-width:190px
+}
+.WaybillInfo ul li label{
+	min-width:65px;
+	text-align:right;
+	font-weight:normal;
+}
+.WaybillInfo table{
+	font-size:14px;
+	border:solid 1px #ccc;
+}
+.WaybillInfo table th,
+.WaybillInfo table td{
+	border:solid 1px #ccc;
+	text-align:center;
+}
+#CYSmyorderModal .footFix {
+	position: absolute;
+	background: #fff;
+	padding: 0;
+	width: 100%;
+	left: 0;
+	/*bottom: 0;*/
+	border: solid 1px blue;
+}
+
+#CYSmyorderModal .footFix h4 {
+	text-align: center;
+	line-height: 35px;
+	background: dodgerblue;
+	color: #fff;
+	margin-top: 0;
+}
+#btnPrint {
+	outline: none;
+}
+#CYSmyorderModal .footFix .mainInfo label,
+#btnPrint .modal-body> div.lebelContent.mainInfo label,
+.Info_myoffer .mainInfo label{
+	vertical-align: top;
+}
+
+#CYSmyorderModal .footFix .mainInfo textarea,
+#btnPrint .modal-body> div.lebelContent.mainInfo textarea,
+.Info_myoffer .mainInfo textarea{
+	border-radius: 5px;
+	resize: none;
+	width: 70%;
+	height: 70px;
+	text-indent: 10px;
+}
+
+.smallWarning {
+	margin: -4px 0 0 70px;
+}
+
+#CYSmyorderModal .footFix .btnSend {
+	text-align: center;
+	margin: 10px;
+	font-weight: bold;
+}
+
+#CYSmyorderModal .footFix .btnSend i {
+	color: green;
+}
+
+#CYSmyorderModal .footFix .btnSend button {
+	margin: 0 10px;
+}
+
+#CYSmyorderModal .footFix .red {
+	color: red;
+}
+#CYSmyorderModal .WaybillInfo b,
+#myWaybillmodal b,
+#mysubWaybillmodal b{
+	display:inline-block;
+	color:rgb(35, 158, 85);
+	margin:7px 0 7px;
+	font-size:15px;
+	/* display:none; */
+}
+#CYSmyorderModal .WaybillInfo b,
+#myWaybillmodal .WaybillInfo b,
+#mysubWaybillmodal .WaybillInfo b{
+	/* display:none; */
+}
+#myWaybillmodal .aboutGoods b,
+#mysubWaybillmodal .aboutGoods b
+{
+	display:inline-block;
+	color:#333;
+	margin:0;
+}
+#CYSmyorderModal .footFix .lebelContent,
+.Info_myoffer .lebelContent{
+	display: inline-block;
+	padding-left: 15px;
+}
+.footFix .fontRed{
+	margin-bottom:20px;
+}
+#CYSmyorderModal .footFix .mainInfo,
+.Info_myoffer .mainInfo{
+	display: block;
+	padding-left: 15px;
+}
+ .fontRed.lebelContent.mainInfo.form-group span.num{
+	margin-left:10px;
+	color:green;
+	font-size:16px;
+}
+#CYSmyorderModal  select,
+#CYSmyorderModal  input,
+#myWaybillmodal  select,
+#myWaybillmodal  input,
+#mysubWaybillmodal  select,
+#mysubWaybillmodal  input{
+	border: solid 1px #ccc;
+}
+#CYSmyorderModal .footFix input,
+.Info_myoffer input{
+	width: 80px;
+	text-align: center;
+}
+#CYSmyorderModal .footFix .fontRed span input{
+	width:100px;
+	line-height:21px;
+	margin-left:5px;
+}
+.alertPrise{
+	display:none;
+    line-height: 30px;
+    position: absolute;
+    z-index: 100;
+   /*  top: 31%; */
+    box-shadow: 0 0 20px #806e2d;
+    text-align: center;
+    /* height: 30px; */
+    padding: 0 5px;
+    left: 1%;
+    background: rgba(40, 96, 144, 0.52);
+    color: #fff;
+    text-align:left;
+    max-width:100%;
+}
+.alertPrise .fontRed span{
+	margin-right:5px
+}
+#myoffer .table > tbody > tr > td:nth-child(2):hover{
+	
+}
+/*订单签收模态框 */
+#signModal .modal-dialog{
+	width:45%;
+	 min-width:600px;
+}
+#file{
+	margin:0 auto;
+    position:relative;
+    text-align:center;
+    width:500px;
+}
+#file select,
+#file input{
+	border:solid 1px #ccc;
+}
+#filetxt{
+	min-width:430px;
+	padding:5px;
+}
+#filebtn{ 
+	position:absolute; 
+	right:0px; 
+	padding:5px;
+	color:#fff;
+	background:rgb(35, 153, 168);
+}
+#upfile{ 
+	width:70px;
+    position:absolute; 
+    right:0px; 
+    top:0px; 
+    opacity:0;
+ }
+ #submitForm > div.modal-body > span.help-block{
+     margin-left:49px;
+ }
+ .image_container{
+     display:none;
+     margin:20px auto;
+	 width:480px;
+	 height:240px;
+	 border:solid 0px #ccc;
+ }
+ #preview{
+     width:100%;
+     height:100%;
+ }
+ #signModal .signModalButton{
+     text-align:center;
+     padding-bottom:10px;
+ }
+  #signModal .signModalButton button{
+      margin-right:10px;
+  }
+/* 查看回单模态框  */
+#btnReceipt .modal-dialog{
+	width:55%;
+	min-width:650px;
+}
+#btnReceipt .img_wraper{
+	margin:10px auto;
+	width:500px;
+	height:300px;
+}
+#btnReceipt #img_content{
+	width:100%;
+	height:100%;
+}
+/* 收到纸质回单 */
+#btnPaper .modal-dialog{
+	width:400px;
+	min-width:400px; 
+	 top: 30%;
+  position: absolute;
+  left:35%;
+}
+#btnPaper .word{
+	text-align:center;
+	padding:60px 0;
+	font-size:16px;
+}
+/*订单修改*/
+#order_modify .modal-body ul.list-inline li{
+    font-size: 1.5rem;
+    padding-right: 20px;
+    font-weight: bold;
+    color:#0A586F;
+}
+#order_modify .modal-body ul.list-inline li input{
+	border:0;
+	background:#fff;
+	height:30px;
+}
+ input:disabled, select:disabled,textarea:disabled{
+	border:1px solid #DDD;
+    background-color:#F5F5F5;
+    color:#ACA899;
+    cursor: not-allowed;
+}
+/*地址*/
+
+.city-select-content {
+	border: solid 1px #ccc;
+    width: 322px;
+    min-height: 10px;
+    background-color: #fff;
+    padding: 10px 0px;
+    text-align: left;
+    position:absolute;
+    z-index:100;
+    overflow:hidden;
+}
+
+.city-select {
+    font-size: 13px;
+}
+
+.city-select dl {
+    line-height: 2;
+    clear: both;
+    padding: 3px 0;
+    margin: 0;
+}
+
+.city-select dt {
+    position: absolute;
+    width: 2.5em;
+    font-weight: 500;
+    text-align: right;
+    line-height: 2;
+}
+
+.city-select dd {
+    margin-left: 0;
+    line-height: 2;
+}
+
+.city-select.province dd {
+    margin-left: 0;
+}
+
+.city-select a {
+    display: inline-block;
+    padding: 0 10px;
+    outline: 0;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-right: 2px;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+
+.city-select a:hover,
+.city-select a:focus {
+    background-color: #f1f8ff;
+    border-radius: 2px;
+    color: #46A4FF;
+}
+
+.city-select a.active {
+    background-color: #46A4FF;
+    color: #fff;
+    border-radius: 2px;
+}
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+/*打印提货单*/
+
+#btnPrint caption {
+	background: #286090;
+	color: #fff;
+	text-align: center;
+	font-size:15px;
+	font-weight:bold;
+	letter-spacing:2px;
+}
+#btnPrint .modal-dialog{
+	width: 850px;
+}
+#btnPrint .modal-body .miscInfo {
+	margin-bottom: 10px;
+	border-bottom: solid 1px #ccc;
+}
+#btnPrint .modal-body .miscInfo span{
+	margin-right:10px;
+	min-width:0;
+}
+#btnPrint .table_goodsInfo tbody td span{
+	display:inline-block;
+	word-break:break-word;
+}
+#btnPrint .modal-body .fontBold{
+	font-weight: bold;
+}
+#btnPrint .modal-body div.lebelContent.mainInfo {
+	margin-bottom: 10px;
+	border-bottom: solid 1px #ccc;
+	padding-bottom:15px;
+}
+#btnPrint .modal-body div.lebelContent.mainInfo .remark_text{
+	overflow:hidden;
+}
+.remark_text{
+    width: 760px;
+    height: 80px;
+    resize: none;
+    }
+#btnPrint .modal-body div.miscInfo.no-line {
+	border-bottom: 0;
+}
+#btnPrint .modal-body div.miscInfo.no-line span{
+	margin-right: 25px;
+	min-width:165px;
+}
+#btnPrint .orderInfo ul{
+	line-height: 30px;
+}
+#btnPrint .orderInfo ul li {
+	min-width: 340px;
+}
+
+#btnPrint .orderInfo ul.list-sp li {
+	min-width: 270px;
+}
+#btnPrint .orderInfo ul li span{
+	margin-right:5px;
+}
+#btnPrint .orderInfo ul.list-sp .carsNumber{
+	padding: 5px 12px;
+}
+#btnPrint .orderInfo ul.list-sp input,
+#btnPrint .orderInfo ul.list-sp select{
+	border: solid 1px #ccc;
+	padding: 2px;
+	width: 130px;
+}
+.ad_long{
+	display: inline-block;
+    width: 390px;
+    word-break: break-word;
+}
+.ad_b{
+	font-weight: normal;
+    vertical-align: top;
+    margin:0 10px;
+}
+#btnPrint .modal-footer {
+	text-align: center;
+}
+/* 弹出框 */
+ .bootbox.modal .modal-dialog{
+  width:30%;
+  min-width:400px;
+  position:absolute;
+  top:35%;
+  left:35%;
+ }
+/*tooltip的样子*/
+.tooltip.top .tooltip-arrow{
+	border-top-color: #d39642  !important;
+}
+.tooltip-inner{
+	background-color:#ffffcc !important;
+	color:#000;
+	border:1px solid #ce969f;
+	font-family:"微软雅黑";
+}
+/*bootstrap table样式重写*/
+/* .bootstrap-table .fixed-table-body{
+	max-height:400px;
+	height:auto;
+} */
+/* .bootstrap-table .fixed-table-body .table{
+	position:relative;
+}
+.bootstrap-table .fixed-table-body .table thead  tr{
+	position:absolute
+}
+.bootstrap-table .fixed-table-body .table tbody{
+	margin-top:39px;
+} */
+.modal .fixed-table-body{
+	height:92%;
+}
+#CYSmyorderModal .bootstrap-table .fixed-table-container{
+	border:0;
+}
+.table>tbody>tr:hover {
+	background-color: #EBF2EA;
+}
+.modal-header  button.close{
+	margin:0 10px;
+}
+/* 运单*/
+#myWaybillmodal .modal-body .miscInfo .modifyNum,
+#mysubWaybillmodal .modal-body .miscInfo .modifyNum
+{
+	padding:3px 12px ;
+	margin: -5px 30px 0 -70px;
+}
+/* font{
+	margin-left:5px;
+} */
+/* 在途追踪 */
+#goodsTrack .goodsEdit{
+	margin-right:10px;
+}
+/* 日期插件样式重写*/
+.datetimepicker  table{
+    font-size:13px;
+}
+.datetimepicker table td{
+	padding:2px;
+	line-height:0;
+}
+.datetimepicker table tr{
+	line-height:0;
+}
+.datetimepicker .datetimepicker-hours span{
+	height:17px;
+	line-height:17px;
+}
+//装货发车、提货单详细信息车牌信息
+#loadingDeparture #tripsInfo .tableChoose{
+	/* position:relative; */
+}
+#vehicliInfoBox .fixed-table-pagination{
+	padding:10px;
+}
+#vehicliInfoBox .fixed-table-header .table{
+	width:auto;
+}
+.chooseContent{
+	position:absolute;
+	width:54%;
+	background:#fff;
+	z-index:100;
+	display:none;
+	box-shadow:0 0 20px #ccc;
+}
+.chooseContent .content_head{
+	padding-left:10px;
+}
+ .chooseContent i{
+	color:#3ad6c9;
+	font-weight:bold;
+	margin-right:10px;
+}
+.chooseContent table thead th{
+   background-color:rgba(51, 122, 183, 0.23);
+}
+/*运营方订单详情*/
+div.topTitle{
+	line-height: 30px;
+	padding: 5px;
+	background: #eee7e7;
+}
+div.topTitle span{
+	min-width:40px;
+	display: inline-block;
+}
+div.topTitle span + span{
+	margin-left:45px;
+}
+/*货物追踪*/
+.newInfo div.pull-left p{
+	color: green;
+	
+}
+.newInfo div.pull-right{
+	margin-top: 10px;
+}
+#carrier .track-rcol {
+	padding: 10px;
+    margin-top: 15px;
+	display: none;
+	width: 600px;
+	background: rgba(238, 238, 238, 0.52);
+}
+
+.track-rcol .warningInfo {
+	padding: 20px 36px 10px;
+	border-bottom: solid 2px #fff;
+	font-size: 16px;
+}
+
+.track-rcol .warningInfo p {
+	color: #FF9900;
+}
+
+.track-rcol .warningInfo select {
+	border: deepskyblue solid 1px;
+}
+
+.track-rcol .track-list {
+	margin: 20px;
+	min-height: 350px;
+	position: relative;
+	padding: 0 10px 10px;
+}
+.track-rcol .noResult{
+	background:#fff;
+}
+.track-rcol .track-list li {
+	position: relative;
+	padding: 0 0 1px 25px;
+	line-height: 25px;
+	border-left: 1px solid #d9d9d9;
+}
+
+.track-rcol .track-list li.first {
+	color: #e4393c;
+	border-left-color: #e4393c;
+	font-size: 14px;
+	padding-top: 0;
+}
+
+.track-rcol .track-list li .node-icon {
+	position: absolute;
+	left: -5px;
+	top: -1%;
+	width: 11px;
+	height: 11px;
+	background: url(../img/img_track.png) -22px -73px no-repeat;
+}
+
+.track-rcol .track-list li.first .node-icon {
+	background: url(../img/img_track.png) -1px -73px no-repeat;
+}
+
+.track-rcol .track-list li .time {
+	margin-right: 20px;
+	position: relative;
+	top: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: -15px;
+}
+/* #carrier .unstyle_table table{
+	display: none;
+} */
+#carrier .list_top{
+	position: relative;
+	text-align: center;
+	margin: 10px 0 20px;
+}
+#carrier .list_top .line{
+	display: inline-block;
+	width: 100%;
+	border-bottom: solid 1px #ccc;
+}
+#carrier .list_top .list_title{
+	font-size: 18px;
+	display: inline-block;
+	padding: 10px;
+	position: absolute;
+	top: -6px;
+	background: #fff;
+	color: #2b1e1e;
+	left: 47%;
+}
+#chaidanDiv b{
+	color:green;
+}
+#waybillInfo > div.bootstrap-table > div.fixed-table-container > div.fixed-table-header{
+	display:none!important;
+}
+#waybillInfo > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body .table{
+	margin-top:0!important;
+	display:table!important;
+}
+#waybillInfo > div.bootstrap-table .fixed-table-container{
+	padding-bottom:0!important;
+}
+#waybillInfo > div.newInfo > div > div > span.showMore{
+	margin-left: 10px;
+}
+#waybillInfo > div.newInfo  .warningInfo .mainWaybill span + span{
+	margin: 10px;
+}
+ .remark_cnt h5{
+	padding-left: 15px;
+    line-height: 40px;
+    background: #dcddf0;
+    font-size: 16px;
+    border-radius: 5px;
+}
+ .remark_cnt .btn_plus{
+	margin: 10px 0;
+}
+#remarkModal .modal-body .class_title span{
+	min-width: 100px;
+	margin-right:5px;
+}
+#remarkModal .modal-body .textarea_cnt textarea{
+    width: 90%;
+    height: 95px;
+    resize: none;
+    padding: 10px;
+    margin: 10px 0;
+}
+.query-term> .nav_order> li.active> a {
+    color: #fff;
+    background: #31708f;
+}
+.query-term> .nav_order> li> a{
+	padding: 10px 80px;
+}
+.query-term> .nav_order> li.active> a:hover{
+	color: #fff;
+}
+.btn_back a{
+	margin: 20px;
+	padding: 10px 40px;
+}
+/*运营方详情页展示*/
+ .infoFor_goods ul li{
+ 	min-width: 205px!important;
+ }
+ .stand_img{
+     display:inline-block;
+     width:20px;
+     height:20px;
+ }
+ 
+.about_note{
+	 margin-left: 51px;
+     color: #4e8e4f;
+     font-weight: bold;
+}
+.about_num{
+	 margin-right: 239px;
+}
+.about_num label{
+	 font-weight:bold;
+}
+.about_num span{
+	    width: 110px;
+    border-bottom: solid 1px red;
+    display: inline-block;
+    text-align: center;
+    color: red;
+}
+/*bootstrap table表头文字居中*/
+.fixed-table-container thead th .th-inner, .fixed-table-container tbody td .th-inner,
+.bootstrap-table .fixed-table-container .fixed-table-body th, .table th{
+	text-align:center !important;
+}

@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sirius.mybatis.mapper.GoodsMapper">
+
+	<resultMap type="com.sirius.entity.query.GoodsQuery" id="GoodsQuery">
+		<id column="id" property="id" />
+		<association property="imgUrls" column="id" select="getImgUrlsByGoods" />
+		<association property="colors" column="id" select="getColorsByGoods" />
+		<association property="sizes" column="id" select="getSizesByGoods" />
+		<association property="goodsgenreValue" column="goodsgenre"
+			select="com.sirius.mybatis.mapper.DictionaryMapper.getById" />
+		<association property="stylegenreValue" column="stylegenre"
+			select="com.sirius.mybatis.mapper.DictionaryMapper.getById" />
+		
+		<association property="goodsEvaluates" column="{goodsId=id}"
+			select="com.sirius.mybatis.mapper.GoodsEvaluateMapper.goodsEvaluateList" />
+	</resultMap>
+	<resultMap type="com.sirius.entity.query.GoodsQuery" id="DataGoodsQuery">
+		<id column="id" property="id" />
+		<association property="colors" column="id" select="getColorsByGoods" />
+		<association property="sizes" column="id" select="getSizesByGoods" />
+	</resultMap>
+
+	<select id="wholesalerAddress" resultType="com.sirius.entity.UserAddress">
+		select * from
+		user_address where id=#{0}
+	</select>
+
+	<!-- 获得成团数量 -->
+	<!-- <select id="clustered" resultType="java.lang.Integer"> select ifnull(sum(number),0) 
+		from order_content where order_content.goods_id=#{0} and order_content.status=1 
+		and date(`order`.update_time) = date(now()) </select> -->
+
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert
+		into
+		goods(`wholesaler_id`,`goods_name`,`price`,`describe`,`thickness`,`quality`,goodsgenre,stylegenre,`buy_time_start`,`buy_time_end`,`clustering`,wholesaler_address_id)
+		values(#{wholesalerId},#{goodsName},#{price},#{describe},#{thickness},#{quality},#{goodsgenre},#{stylegenre},#{buyTimeStart},#{buyTimeEnd},#{clustering},#{wholesalerAddressId})
+	</insert>
+
+
+	<select id="mygoodsList" resultMap="GoodsQuery">
+		select * from goods where
+		wholesaler_id=#{wholesalerId} and putaway=#{putaway}
+		order by id limit
+		#{size}
+	</select>
+	<select id="mygoodsListMark" resultMap="GoodsQuery">
+		select * from goods where
+		wholesaler_id=#{wholesalerId} and putaway=#{putaway}
+		and id>#{markId}
+		order by id limit #{size}
+	</select>
+
+	<!-- <select id="goodsList" resultMap="GoodsQuery"> select * from goods 
+		where putaway and buy_time_start &lt; curtime() and buy_time_end>curtime() 
+		order by id limit #{size} </select> <select id="goodsListMark" resultMap="GoodsQuery"> 
+		select * from goods where id>#{markId} and putaway and buy_time_start &lt; 
+		curtime() and buy_time_end>curtime() order by id limit #{size} </select> -->
+
+	<select id="getImgUrlsByGoods" resultType="java.lang.String">
+		select img_url from
+		goods_img where goods_id=#{0}
+	</select>
+	<select id="getColorsByGoods" resultType="java.lang.String">
+		select distinct color
+		from
+		goods_specification where goods_id=#{0}
+	</select>
+	<select id="getSizesByGoods" resultType="java.lang.String">
+		select distinct size
+		from
+		goods_specification where goods_id=#{0}
+	</select>
+	<!-- 订单下的商品的总钱数 -->
+	<select id="getTotalPriceByGoods" resultType="java.lang.String">
+		select distinct size
+		from
+		goods_specification where goods_id=#{0}
+	</select>
+
+	<select id="getById" resultMap="GoodsQuery">
+		select goods.*,(select count(1)
+		from goods_evaluate where
+		goods_evaluate.goods_id=goods.id)
+		evaluate_count,(select
+		ifnull(sum(number),0)
+		from
+		order_content
+		where
+		order_content.goods_id=goods.id and
+		order_content.status=1) clustered,<!-- 
+			以成团数量 -->
+		(select ifnull(sum(number),0)
+		from
+		order_content
+		where
+		order_content.goods_id=goods.id and
+		order_content.status in (1,2))
+		sales_volume
+		from goods where id=#{0}
+	</select>
+
+	<update id="update">
+		update goods
+		<set>
+			<if test="goodsName != null">
+				goods_name = #{goodsName},
+			</if>
+			<if test="describe != null">
+				`describe` = #{describe},
+			</if>
+			<if test="thickness != null">
+				thickness = #{thickness},
+			</if>
+			<if test="quality != null">
+				quality = #{quality},
+			</if>
+			<if test="price != null">
+				price = #{price},
+			</if>
+		
+			<if test="clustering != null">
+				clustering = #{clustering},
+			</if>
+			<if test="goodsgenre != null">
+				goodsgenre = #{goodsgenre},
+			</if>
+			<if test="stylegenre != null">
+				stylegenre = #{stylegenre},
+			</if>
+			<if test="stylegenre != null">
+				wholesaler_address_id = #{wholesalerAddressId},
+			</if>
+
+		</set>
+		where id=#{id} and wholesaler_id=#{wholesalerId}
+	</update>
+
+	<!-- 获取修改某个商品的信息 -->
+	<select id="getUpdateGoods" resultType="com.sirius.entity.query.GoodsQuery">
+		select goods.*,
+		(select province_name from location_province 
+		where `code`=goods.production_province) province,
+		(select city_name from location_city 
+		where `code`=goods.production_place) city 
+		from goods where id=#{id}
+	</select>
+	<!-- 修改商品 -->
+	<update id="updateGoods" >
+  		update goods   
+  		<set>
+  			<if test="goodsName != null">
+  				goods_name=#{goodsName},
+  			</if>
+  			<if test="productionPlace != null">
+  				production_place=#{productionPlace},
+				production_province=(select province_code 
+				from location_city 
+				where `code`=#{productionPlace}),
+  			</if>
+  			<if test="describe != null">
+  				`describe`=#{describe},
+  			</if>
+  			<if test="fashionId != null">
+  				fashion_id=#{fashionId},
+  			</if>
+  			<if test="goodsgenre != null">
+  				goodsgenre=#{goodsgenre},
+  			</if>
+  			<if test="stylegenre != null">
+  				stylegenre=#{stylegenre} ,
+  			</if>
+  			<if test="quality != null">
+  				quality=#{quality} ,
+  			</if>
+  			<if test="season != null">
+  				season=#{season} ,
+  			</if>
+  			<if test="price != null">
+  				price= #{price},
+  			</if>
+  			<if test="marketYear != null">
+  				market_year=#{marketYear} ,
+  			</if>
+  			<if test="marketPrice != null">
+  				market_price= #{marketPrice},
+  			</if>
+  			<if test="factoryDate != null">
+  				factory_date=#{factoryDate} ,
+  			</if>
+  			<if test="model != null">
+  				model=#{model} ,
+  			</if>
+  			<if test="trademarkId != null">
+  				trademark_id=#{trademarkId}  ,
+  			</if>
+		  </set>
+		where wholesaler_id=#{wholesalerId} and id=#{id}
+	</update>
+	<!-- 商品列表 -->
+	<select id="data" resultMap="DataGoodsQuery">
+		select * from (
+		select goods.*,
+		(select ifnull(sum(number),0)
+		from
+		order_content
+		where
+		order_content.goods_id=goods.id and
+		order_content.status=1)
+		clustered,<!-- 成团数 -->
+		(select ifnull(sum(number),0)
+		from
+		order_content
+		where
+		order_content.goods_id=goods.id and
+		order_content.status=1)/clustering
+		cluster_schedule, <!-- 成团进度 -->
+		(select ifnull(sum(number),0)
+		from
+		order_content
+		where
+		order_content.goods_id=goods.id and
+		order_content.status in (1,2))
+		sales_volume<!-- 销量 -->
+		,(select img_url from goods_img where goods_id=goods.id limit 1)
+		img_url,
+		<!-- 库存 -->
+		(select ifnull(sum(quantity),0) from
+		goods_specification
+		where
+		goods_specification.goods_id=goods.id )
+		quantity,
+		<!-- 颜色 -->
+		(select ifnull(sum(color),0) from
+		goods_specification
+		where
+		goods_specification.goods_id=goods.id )
+		color ,
+		<!-- 尺码 -->
+		(select ifnull(sum(size),0) from
+		goods_specification
+		where
+		goods_specification.goods_id=goods.id )
+		size 
+		from goods
+		where 1
+		and exist
+
+		<if test="wholesalerId!=null">
+			and wholesaler_id = #{wholesalerId}
+		</if>
+		<if test="goodsName!=null">
+			and goods_name like #{goodsName}
+		</if>
+		<if test="keyword!=null">
+			and (goods_name like #{keyword} or `describe` like
+			#{keyword} or thickness like #{keyword} or quality like #{keyword}
+			or
+			goodsgenre in (select id from genre where type=0 and name like
+			#{keyword})
+			or stylegenre in (select id from genre where type=1 and
+			name like #{keyword})
+			)
+		</if>
+		<if test="goodsgenres!=null">
+			and goodsgenre in
+			<foreach collection="goodsgenres" open="(" separator=","
+				close=")" item="item">#{item}</foreach>
+		</if>
+		<if test="stylegenres!=null">
+			and stylegenre in
+			<foreach collection="stylegenres" open="(" separator=","
+				close=")" item="item">#{item}</foreach>
+		</if>
+		<!-- spu -->
+		<if test="spu !=null">
+			and spu=#{spu} 
+		</if>
+		<!-- 根据尺码查询 -->
+		<if test="size != null">
+			and (select count(1) from goods_specification where
+			size=#{size} and goods_id=goods.id)
+		</if>
+		<if test="createTimeStart != null">
+			and create_time>=#{createTimeStart}
+		</if>
+		<if test="createTimeEnd != null">
+			and create_time&lt;=#{createTimeEnd}
+		</if>
+		)x
+		where 1
+		<!-- 根据库存查询 -->
+		<if test="quantity!=null">
+			and quantity=#{quantity}
+		</if>
+
+		<if test="order!=null">
+			order by ${order}
+		</if>
+		<if test="offset!=null and limit!=null">
+			limit
+			#{offset},#{limit}
+		</if>
+
+	</select>
+	<!-- 商品数量 -->
+	<select id="dataCount" resultType="java.lang.Integer">
+		select count(1) from (
+		select goods.*,
+		(select ifnull(sum(number),0)
+		from
+		order_content
+		where
+		order_content.goods_id=goods.id and
+		order_content.status=1)
+		clustered,<!-- 成团数 -->
+		(select ifnull(sum(number),0)
+		from
+		order_content
+		where
+		order_content.goods_id=goods.id and
+		order_content.status=1)/clustering
+		cluster_schedule, <!-- 成团进度 -->
+		(select ifnull(sum(number),0)
+		from
+		order_content
+		where
+		order_content.goods_id=goods.id and
+		order_content.status in (1,2))
+		sales_volume<!-- 销量 -->
+		,(select img_url from goods_img where goods_id=goods.id limit 1)
+		img_url,
+		<!-- 库存 -->
+		(select ifnull(sum(quantity),0) from
+		goods_specification
+		where
+		goods_specification.goods_id=goods.id )
+		quantity,
+		<!-- 颜色 -->
+		(select ifnull(sum(color),0) from
+		goods_specification
+		where
+		goods_specification.goods_id=goods.id )
+		color ,
+		<!-- 尺码 -->
+		(select ifnull(sum(size),0) from
+		goods_specification
+		where
+		goods_specification.goods_id=goods.id )
+		size
+		from goods
+		where 1
+		and exist
+		<if test="wholesalerId!=null">
+			and wholesaler_id = #{wholesalerId}
+		</if>
+		<if test="goodsName!=null">
+			and goods_name like #{goodsName}
+		</if>
+		<if test="keyword!=null">
+			and (goods_name like #{keyword} or `describe` like
+			#{keyword} or thickness like #{keyword} or quality like #{keyword}
+			or
+			goodsgenre in (select id from genre where type=0 and name like
+			#{keyword})
+			or stylegenre in (select id from genre where type=1 and
+			name like #{keyword})
+			)
+		</if>
+		<if test="goodsgenres!=null">
+			and goodsgenre in
+			<foreach collection="goodsgenres" open="(" separator=","
+				close=")" item="item">#{item}</foreach>
+		</if>
+		<if test="stylegenres!=null">
+			and stylegenre in
+			<foreach collection="stylegenres" open="(" separator=","
+				close=")" item="item">#{item}</foreach>
+		</if>
+		<!-- 根据尺码查询 -->
+		<if test="size != null">
+			and (select count(1) from goods_specification where
+			size=#{size} and goods_id=goods.id)
+		</if>
+		<if test="createTimeStart != null">
+			and create_time>=#{createTimeStart}
+		</if>
+		<if test="createTimeEnd != null">
+			and create_time&lt;=#{createTimeEnd}
+		</if>
+		)x
+		where 1
+		<!-- 根据库存查询 -->
+		<if test="quantity!=null">
+			and quantity=#{quantity}
+		</if>
+		<!-- 根据商品编号查询 -->
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+	</select>
+	
+	<!-- 添加商品 -->
+	<insert id="createGoods" useGeneratedKeys="true" keyProperty="id">
+  		insert into goods(wholesaler_id,
+		goods_name,`describe`,fashion_id,production_province,
+		production_place,goodsgenre,stylegenre,quality,season,
+		price,market_year,market_price,factory_date,model,
+		trademark_id,spu,buy_time_start,buy_time_end,clustering) 
+		value(#{wholesalerId},#{goodsName},#{describe},#{fashionId},
+		(select location_province.`code` 
+			from location_city left join location_province 
+			on location_city.province_code=location_province.`code`
+			where location_city.`code`=#{productionPlace}),#{productionPlace},#{goodsgenre},#{stylegenre},
+		#{quality},#{season},#{price},#{marketYear},#{marketPrice},
+		#{factoryDate},#{model},#{trademarkId},#{spu},#{buyTimeStart},#{buyTimeEnd},
+		#{clustering})
+	</insert>
+	
+	<!-- 根据订单id获得商品信息 -->
+	<select id="getGoodsOrderId" resultMap="DataGoodsQuery">
+		select  
+		goods.*,
+		<!-- 商品图片 -->
+		(select img_url from goods_img where goods_id=goods.id limit 1) img_url,
+		<!-- 商品颜色 -->
+		(select ifnull(sum(color),0) from goods_specification 
+		where goods_specification.goods_id=goods.id ) color ,   
+		<!-- 商品数量 --> 
+		(select count(1) from goods_specification 
+		where goods_specification.goods_id=goods.id ) quantity ,
+		<!-- 订单钱数 -->
+		(select money from `order` where id=#{orderId} ) money
+		from goods  
+		where id  
+		in(select goods_id from order_content  
+		where order_id=#{orderId} 
+		<if test="wholesalerId!=null">
+			and wholesaler_id = #{wholesalerId}
+		</if>
+		)
+	</select>
+	<!-- 根据订单id获得商品信息的数量 -->
+	<select id="getGoodsOrderIdContent" resultType="java.lang.Integer">
+		select  
+		count(1)   
+		from goods  
+		where id  
+		in(select goods_id from order_content  
+		where order_id=#{orderId} 
+		<if test="wholesalerId!=null">
+			and wholesaler_id = #{}
+		</if>
+		)
+	</select>
+</mapper>

@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//conf/common.properties=UTF-8
+encoding//web/WEB-INF/views/apkList.jsp=UTF-8
+encoding//web/WEB-INF/views/order/findByGoods.jsp=UTF-8
+encoding//web/WEB-INF/views/order/info.jsp=UTF-8
+encoding//web/WEB-INF/views/shopkeeper/shopkeeperCreate.jsp=UTF-8
+encoding//web/WEB-INF/views/ueditor/index.jsp=UTF-8
+encoding//web/demo.jsp=UTF-8
+encoding//web/index.jsp=UTF-8
+encoding/<project>=UTF-8

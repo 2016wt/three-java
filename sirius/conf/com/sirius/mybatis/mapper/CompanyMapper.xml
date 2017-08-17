@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sirius.mybatis.mapper.CompanyMapper">
+	<!-- 修改公司信息 -->
+	<update id="updateCompany">
+		update company set 
+		province=#{province},city=#{city},area=#{area},
+		`name`=#{name},detailed=#{detailed},brand=#{brand},
+		phone=#{phone},url=#{url},email=#{email},intro=#{intro}  
+		where user_id=#{userId}  
+	</update>
+</mapper>
